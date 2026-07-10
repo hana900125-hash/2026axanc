@@ -372,11 +372,15 @@
       font-size:clamp(28px, 8.2vw, 38px) !important;
       line-height:1.28 !important;
       margin-bottom:20px !important;
+      max-width:11em !important;
+      text-wrap:balance !important;
       word-break:keep-all !important;
     }
     #hero p {
       font-size:15.5px !important;
       line-height:1.72 !important;
+      max-width:21em !important;
+      text-wrap:pretty !important;
       word-break:keep-all !important;
     }
     .ax-section {
@@ -388,8 +392,39 @@
       min-height:0 !important;
       font-size:clamp(25px, 7.2vw, 32px) !important;
       line-height:1.35 !important;
+      max-width:12em !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+      text-wrap:balance !important;
       word-break:keep-all !important;
       white-space:normal !important;
+    }
+    section h2 span {
+      font-size:inherit !important;
+      line-height:inherit !important;
+    }
+    section p {
+      max-width:22em !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+      text-wrap:pretty !important;
+      word-break:keep-all !important;
+      overflow-wrap:break-word !important;
+    }
+    .ax-appbody,
+    .ax-brow,
+    .ax-tl-side,
+    .ax-faq-card {
+      word-break:keep-all !important;
+      overflow-wrap:break-word !important;
+    }
+    .ax-faq-card button {
+      align-items:flex-start !important;
+      padding:22px 20px !important;
+      line-height:1.55 !important;
+    }
+    .ax-faq-card button > span:first-child {
+      text-wrap:pretty !important;
     }
     #ax-intro-grid,
     #ax-vibe-grid {
