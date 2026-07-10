@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#070f1c">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#070f1c"/>
+    <text x="600" y="330" text-anchor="middle" font-family="sans-serif" font-size="60" font-weight="700" letter-spacing="4" fill="#dff2ff">2026 AX경진대회</text>
+    <rect x="360" y="410" width="480" height="70" rx="18" fill="none" stroke="#2f7bff" stroke-width="2"/>
+    <circle cx="410" cy="445" r="9" fill="#4de1ff"/>
+    <rect x="440" y="440" width="300" height="10" rx="5" fill="#4de1ff" opacity="0.5"/>
+    <text x="600" y="600" text-anchor="middle" font-family="sans-serif" font-size="140" font-weight="800" fill="#2f7bff" opacity="0.10">POSCO A&amp;C</text>
+  </svg>
+</template>
+<x-dc>
+<helmet data-dc-atomics="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/subsets/Paperlogy-dynamic-subset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+  html { scroll-behavior:smooth; }
+  h1, h2 { font-family:'Paperlogy', 'Pretendard Variable', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; }
+  html, body { margin:0; padding:0; overflow-x:hidden; background:#05090f; }
+  * { box-sizing: border-box; }
+  html { scrollbar-width:thin; scrollbar-color:rgba(47,123,255,0.7) rgba(10,20,36,0.6); }
+  ::-webkit-scrollbar { width:11px; height:11px; }
+  ::-webkit-scrollbar-track { background:rgba(10,20,36,0.6); }
+  ::-webkit-scrollbar-thumb { border-radius:999px; border:2px solid rgba(10,20,36,0.6);
+      background:linear-gradient(180deg,#3f8dff,#2456d8); }
+  ::-webkit-scrollbar-thumb:hover { background:linear-gradient(180deg,#5aa0ff,#2f7bff); }
+  ::selection { background: rgba(77,225,255,0.3); color:#fff; }
+  a { color:inherit; text-decoration:none; }
+  a:hover { color:#bff2ff; }
+
+  /* ===== common section-header system (identical Y on nav) ===== */
+  .ax-section { padding:120px 48px 128px; scroll-margin-top:0; min-height:calc(100vh - 72px); box-sizing:border-box; }
+  .ax-label { font-size:13px; font-weight:700; letter-spacing:0.14em; color:rgba(120,190,255,0.65); margin:0 0 24px; text-align:center; }
+  .ax-title { margin:0 0 24px; min-height:2.8em; display:grid; place-items:center; font-size:clamp(28px,3.2vw,42px); font-weight:600; color:#f3f8ff; line-height:1.4; letter-spacing:-0.01em; text-align:center; }
+  @media (max-width: 720px) {
+    .ax-section { padding:96px 24px 88px; min-height:calc(100vh - 60px); }
+  }
+  /* 03 example: size to content, no forced viewport height */
+  #example { min-height:0 !important; padding-bottom:56px; }
+  @media (max-width: 720px) { #example { padding-bottom:72px; } }
+
+  /* 06 benefit: editorial numbered list */
+  .ax-blist { max-width:900px; margin:0 auto; border-top:1px solid rgba(120,190,255,0.14); }
+  .ax-brow { display:grid; grid-template-columns:120px 1fr auto; align-items:center; gap:30px;
+             padding:30px 20px; border-bottom:1px solid rgba(120,190,255,0.14); position:relative;
+             transition:padding 0.4s ease, background 0.4s ease; }
+  .ax-brow:hover { padding-left:34px; background:linear-gradient(90deg, rgba(47,123,255,0.08), transparent 70%); }
+  .ax-brow::before { content:''; position:absolute; left:0; top:12%; height:76%; width:2px;
+             background:linear-gradient(#4de1ff,#2f7bff); border-radius:2px; opacity:0;
+             transition:opacity 0.4s ease; box-shadow:0 0 12px rgba(77,225,255,0.6); }
+  .ax-brow:hover::before { opacity:1; }
+  .ax-brow .idx { font-family:'Paperlogy'; font-weight:800; font-size:46px; line-height:1;
+             background:linear-gradient(135deg,#8fe9ff,#2f7bff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .ax-brow h3 { margin:0 0 5px; font-size:19px; font-weight:700; color:#f3f8ff; }
+  .ax-brow p { margin:0; font-size:14.5px; line-height:1.6; color:rgba(228,238,252,0.9); }
+  .ax-brow .chev { color:rgba(120,200,255,0.35); transition:color 0.4s ease, transform 0.4s ease; flex:none; }
+  .ax-brow:hover .chev { color:#8fe9ff; transform:translateX(4px); }
+  @media (max-width: 720px) {
+    .ax-brow { grid-template-columns:64px 1fr; gap:18px; padding:24px 6px; }
+    .ax-brow .idx { font-size:34px; }
+    .ax-brow .chev { display:none; }
+  }
+
+  /* 09 FAQ: card hover */
+  .ax-faq-card:hover {
+    border-color: rgba(120,205,255,0.42) !important;
+    box-shadow: 0 14px 34px rgba(3,9,18,0.5), 0 0 28px rgba(77,225,255,0.16) !important;
+  }
+  .ax-faq-card:hover button { background: rgba(255,255,255,0.03) !important; }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(18px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  @keyframes resultGenerate {
+    0%   { opacity:0; transform: translateY(46px) scale(0.94); filter:blur(6px); }
+    55%  { opacity:1; transform: translateY(-6px) scale(1.015); filter:blur(0); }
+    75%  { transform: translateY(2px) scale(0.998); }
+    100% { opacity:1; transform: translateY(0) scale(1); filter:blur(0); }
+  }
+  @keyframes resultScan {
+    0%   { transform: translateX(-120%); opacity:0; }
+    30%  { opacity:1; }
+    100% { transform: translateX(320%); opacity:0; }
+  }
+  @keyframes resultItemIn {
+    from { opacity:0; transform: translateX(-8px); }
+    to   { opacity:1; transform: translateX(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity:0; }
+    to   { opacity:1; }
+  }
+  @keyframes blinkCursor {
+    0%, 45% { opacity:1; }
+    50%, 95% { opacity:0; }
+    100% { opacity:1; }
+  }
+  @keyframes bigTypeFloat {
+    0%   { transform: translate(-50%, 0) scale(1); }
+    50%  { transform: translate(-50%, -14px) scale(1.008); }
+    100% { transform: translate(-50%, 0) scale(1); }
+  }
+  @keyframes nodeFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-9px); }
+  }
+  @keyframes linePulse {
+    0%   { left:-40%; }
+    100% { left:100%; }
+  }
+  @property --ax-ex-ang {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+  }
+  @keyframes axExSpin { to { --ax-ex-ang: 360deg; } }
+  .ax-ex-card {
+    position: relative;
+    height: 100%;
+    background: rgba(255,255,255,0.035);
+    border-radius: 18px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    isolation: isolate;
+  }
+  .ax-ex-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(from var(--ax-ex-ang),
+        rgba(120,180,255,0.05) 0deg,
+        rgba(120,180,255,0.05) 205deg,
+        #4de1ff 268deg,
+        #8fe9ff 300deg,
+        #2f7bff 332deg,
+        rgba(120,180,255,0.05) 360deg);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: axExSpin 4.5s linear infinite;
+    animation-delay: var(--ax-ex-delay, 0s);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .ax-ex-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 26px rgba(77,178,255,0.12);
+    opacity: 0.5;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ax-ex-card:hover { transform: translateY(-4px); }
+  .ax-ex-card:hover::after { opacity: 1; box-shadow: 0 20px 46px rgba(4,10,20,0.5), 0 0 34px rgba(77,225,255,0.28); }
+  .ax-ex-card > * { position: relative; z-index: 2; }
+
+  /* 03 example: mini app window (blue-tone) */
+  .ax-appwin { border-radius:16px; overflow:hidden; height:100%; display:flex; flex-direction:column;
+      border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);
+      transition:transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease; }
+  .ax-appwin:hover { transform:translateY(-5px); border-color:rgba(120,200,255,0.45);
+      box-shadow:0 22px 48px rgba(3,9,18,0.6), 0 0 30px rgba(77,225,255,0.18); }
+  .ax-appbar { display:flex; align-items:center; gap:8px; padding:12px 16px;
+      background:rgba(6,14,26,0.7); border-bottom:1px solid rgba(120,190,255,0.12); }
+  .ax-dot { width:10px; height:10px; border-radius:50%; }
+  .ax-appbar .fname { margin-left:8px; font-size:12px; color:rgba(180,205,235,0.7);
+      font-family:'Pretendard Variable', -apple-system, sans-serif; }
+  .ax-appbody { padding:26px 28px 28px; display:flex; flex-direction:column; flex:1; }
+  .ax-skl { height:8px; border-radius:5px; background:linear-gradient(90deg, rgba(120,200,255,0.28), rgba(120,200,255,0.06)); margin-bottom:9px; }
+  .ax-grand-neon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(from var(--ax-ex-ang),
+        rgba(120,180,255,0.04) 0deg,
+        rgba(120,180,255,0.04) 190deg,
+        #4de1ff 258deg,
+        #b8f2ff 292deg,
+        #2f7bff 330deg,
+        rgba(120,180,255,0.04) 360deg);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: axExSpin 5s linear infinite;
+    pointer-events: none;
+    z-index: 2;
+  }
+  @keyframes goldSpin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  @keyframes spotBreath {
+    0%, 100% { opacity: 0.68; }
+    50%      { opacity: 1; }
+  }
+  @keyframes goldTextShimmer {
+    0%, 100% { color: rgba(240,205,150,0.75); text-shadow: none; }
+    50%      { color: #ffe9c4; text-shadow: 0 0 14px rgba(255,215,150,0.55); }
+  }
+  @keyframes bigTypeRise {
+    0%   { transform: translate(-50%, 46px) scale(0.985); opacity:0.35; }
+    50%  { transform: translate(-50%, -18px) scale(1.02); opacity:1; }
+    100% { transform: translate(-50%, 46px) scale(0.985); opacity:0.35; }
+  }
+  @keyframes sweepLight {
+    0%   { transform: translateX(-30%) rotate(8deg); opacity:0.5; }
+    50%  { transform: translateX(30%) rotate(8deg); opacity:0.9; }
+    100% { transform: translateX(-30%) rotate(8deg); opacity:0.5; }
+  }
+  @keyframes glowPulse {
+    0%, 100% { opacity:0.55; }
+    50% { opacity:1; }
+  }
+  @keyframes ctaGlow {
+    0%, 100% { box-shadow:0 0 0 1px rgba(160,225,255,0.5) inset, 0 10px 34px rgba(47,123,255,0.45), 0 0 46px rgba(77,225,255,0.28); }
+    50%      { box-shadow:0 0 0 1px rgba(160,225,255,0.5) inset, 0 10px 34px rgba(47,123,255,0.55), 0 0 64px rgba(77,225,255,0.48); }
+  }
+  @keyframes auroraA {
+    0%   { transform: translate(-10%, 0) rotate(0deg) scale(1); }
+    50%  { transform: translate(12%, -8%) rotate(24deg) scale(1.25); }
+    100% { transform: translate(-10%, 0) rotate(0deg) scale(1); }
+  }
+  @keyframes auroraB {
+    0%   { transform: translate(8%, 4%) rotate(0deg) scale(1.1); }
+    50%  { transform: translate(-14%, -6%) rotate(-28deg) scale(1.35); }
+    100% { transform: translate(8%, 4%) rotate(0deg) scale(1.1); }
+  }
+  @keyframes auroraC {
+    0%   { transform: translate(0, 6%) scale(1); opacity:0.5; }
+    50%  { transform: translate(6%, -4%) scale(1.3); opacity:0.85; }
+    100% { transform: translate(0, 6%) scale(1); opacity:0.5; }
+  }
+  @keyframes axConfetti {
+    0%   { transform:translate(0,0) rotate(0deg) scale(0.6); opacity:0; }
+    12%  { opacity:1; }
+    100% { transform:translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(1); opacity:0; }
+  }
+  .ax-confetti { position:absolute; inset:0; pointer-events:none; overflow:visible; z-index:4; transform-origin:50% 16%; transform:scale(1.7); }
+  .ax-confetti i { position:absolute; top:16%; left:50%; width:8px; height:12px; border-radius:2px; opacity:0; will-change:transform,opacity; }
+  .ax-award.ac:hover .ax-confetti i { animation: axConfetti 1.15s cubic-bezier(0.18,0.7,0.3,1) var(--d,0s) forwards; }
+  @keyframes awardGlow {
+    0%, 100% { box-shadow:0 0 0 1px rgba(255,210,140,0.28) inset, 0 20px 60px rgba(4,10,20,0.5), 0 0 50px rgba(255,190,110,0.16); }
+    50%      { box-shadow:0 0 0 1px rgba(255,220,160,0.4) inset, 0 20px 60px rgba(4,10,20,0.5), 0 0 74px rgba(255,190,110,0.28); }
+  }
+  @keyframes particleFloat {
+    0%   { transform: translateY(0) scale(1); opacity:0; }
+    10%  { opacity: var(--pOpacity, 0.5); }
+    90%  { opacity: var(--pOpacity, 0.5); }
+    100% { transform: translateY(-160px) scale(0.6); opacity:0; }
+  }
+
+  @media (max-width: 1080px) {
+    #ax-header-nav { display:none; }
+  }
+  @media (max-width: 900px) {
+    #ax-intro-grid { grid-template-columns:1fr !important; gap:40px !important; }
+    #ax-vibe-grid { grid-template-columns:1fr !important; gap:48px !important; }
+  }
+  @media (max-width: 760px) {
+    #ax-flow { flex-direction:column !important; }
+    #ax-flow .ax-flow-conn { width:2px !important; height:40px !important; }
+  }
+  @media (max-width: 860px) {
+    #ax-podium { grid-template-columns:1fr !important; }
+    #ax-podium > div { min-height:auto !important; }
+    #ax-participant-grid { grid-template-columns:1fr !important; gap:8px !important; }
+    .ax-part-divider { width:auto !important; height:1px !important; align-self:stretch !important; margin:8px 40px !important;
+        background:linear-gradient(90deg, transparent, rgba(120,190,255,0.35), transparent) !important; }
+  }
+  @media (max-width: 980px) {
+    #ax-example-grid { grid-template-columns:repeat(2, 1fr) !important; }
+  }
+  @media (max-width: 720px) {
+    #ax-apply-grid { grid-template-columns:1fr !important; }
+    #ax-example-grid { grid-template-columns:1fr !important; }
+  }
+
+  /* ===== Roadmap timeline ===== */
+  .ax-tl-num { color:rgba(120,160,220,0.42); text-shadow:none; filter:blur(0.4px); transition:color 1s cubic-bezier(0.33,1,0.68,1), text-shadow 1s cubic-bezier(0.33,1,0.68,1), filter 1s cubic-bezier(0.33,1,0.68,1); }
+  .ax-tl-item.is-active .ax-tl-num { color:#6febff; text-shadow:0 0 10px rgba(77,225,255,0.55), 0 0 32px rgba(77,225,255,0.45), 0 0 60px rgba(47,123,255,0.35); filter:blur(0); }
+  .ax-tl-node { background:#22344e; box-shadow:none; transform:translate(-50%,-50%) scale(0.78); transition:background-color .9s cubic-bezier(0.33,1,0.68,1), box-shadow .9s cubic-bezier(0.33,1,0.68,1), transform .9s cubic-bezier(0.34,1.4,0.64,1); }
+  .ax-tl-item.is-active .ax-tl-node { background:#8fe9ff; box-shadow:0 0 10px #4de1ff, 0 0 26px rgba(77,225,255,0.7), 0 0 52px rgba(77,225,255,0.45); transform:translate(-50%,-50%) scale(1.28); }
+  .ax-tl-hline { width:0; background:linear-gradient(90deg, rgba(77,225,255,0), #4de1ff); opacity:0.5; filter:blur(0.3px); transition:width 1s cubic-bezier(0.33,1,0.68,1), opacity 1s ease; }
+  .ax-tl-item.is-active .ax-tl-hline { width:4rem; opacity:1; box-shadow:0 0 12px rgba(77,225,255,0.55); }
+  .ax-tl-card { transition:border-color .6s ease, box-shadow .6s ease, transform .6s ease; }
+  .ax-tl-item.is-active .ax-tl-card { border-color:rgba(120,205,255,0.4); box-shadow:0 16px 40px rgba(4,10,20,0.5), 0 0 26px rgba(77,225,255,0.12); }
+  .ax-vline-progress { height:0; transition:height .18s linear; }
+  /* soft blurred bleed behind the progress fill */
+  .ax-vline-progress::before { content:''; position:absolute; left:50%; top:0; transform:translateX(-50%); width:11px; height:100%; border-radius:6px; background:linear-gradient(180deg, rgba(77,225,255,0.55), rgba(47,123,255,0.4)); filter:blur(7px); opacity:0.85; }
+  /* glowing comet head that bleeds at the leading edge */
+  .ax-vline-progress::after { content:''; position:absolute; left:50%; bottom:-9px; transform:translateX(-50%); width:26px; height:26px; border-radius:50%; background:radial-gradient(circle, rgba(180,245,255,0.95) 0%, rgba(77,225,255,0.6) 32%, rgba(47,123,255,0.28) 60%, transparent 75%); filter:blur(2.5px); }
+  @media (max-width: 760px) {
+    #ax-tl-vline { left:22px !important; transform:none !important; }
+    .ax-tl-node { left:22px !important; }
+    .ax-tl-hline { display:none !important; }
+    .ax-tl-side { width:100% !important; text-align:left !important; padding-left:54px !important; padding-right:0 !important; }
+    .ax-tl-side > div { text-align:left !important; }
+    .ax-tl-spacer { display:none !important; }
+  }
+
+  /* ===== Award flip / tarot spread ===== */
+  .ax-flip { perspective:1200px; height:21rem; cursor:pointer; width:100%; }
+  .ax-flip.grand { height:24rem; }
+  .ax-flip-inner { position:relative; width:100%; height:100%; transition:transform .8s cubic-bezier(0.4,0,0.2,1); transform-style:preserve-3d; }
+  .ax-award:hover .ax-flip-inner { transform:rotateY(180deg); }
+  .ax-flip-front, .ax-flip-back { position:absolute; inset:0; -webkit-backface-visibility:hidden; backface-visibility:hidden;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; padding:2rem; border-radius:22px; }
+  .ax-flip-back { transform:rotateY(180deg); }
+  .ax-tarot-wrap { width:100%; height:100%; transition:transform .6s cubic-bezier(0.34,1.56,0.64,1); }
+  @media (min-width: 820px) {
+    .ax-tarot-left { transform:rotateY(16deg) rotateZ(-3deg) translateY(1.4rem) translateX(0.6rem); }
+    .ax-tarot-center { transform:translateZ(24px) translateY(-1rem); }
+    .ax-tarot-right { transform:rotateY(-16deg) rotateZ(3deg) translateY(1.4rem) translateX(-0.6rem); }
+    .ax-award { position:relative; z-index:10; }
+    .ax-award.ac { z-index:30; }
+    .ax-award:hover { z-index:50; }
+    .ax-award.al:hover .ax-tarot-left { transform:rotateY(0) rotateZ(0) translateY(0.4rem) translateX(1.4rem) translateZ(70px); }
+    .ax-award.ac:hover .ax-tarot-center { transform:rotateY(0) rotateZ(0) translateY(-1.6rem) translateZ(90px); }
+    .ax-award.ar:hover .ax-tarot-right { transform:rotateY(0) rotateZ(0) translateY(0.4rem) translateX(-1.4rem) translateZ(70px); }
+  }
+  @media (max-width: 819px) {
+    #ax-award-spread { grid-template-columns:1fr !important; }
+    .ax-flip, .ax-flip.grand { height:16rem; }
+  }
+</style>
+</helmet>
+
+<div style="width:100%; font-family:'Paperlogy', 'Pretendard Variable', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(47,123,255,0.13), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 85% 106%, rgba(77,225,255,0.07), transparent 62%),
+      #070f1c;
+    background-attachment: fixed;">
+
+  <!-- ===================== HEADER ===================== -->
+  <header data-screen-label="Header" style="position:fixed; top:0; left:0; right:0; z-index:100;
+      display:flex; align-items:center; justify-content:space-between; height:72px; padding:0 48px;
+      background:rgba(5,9,15,0.62); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      opacity:{{ headerOpacity }}; transform:{{ headerTransform }}; pointer-events:{{ headerPointerEvents }};
+      transition: opacity 0.4s ease, transform 0.4s ease;">
+    <a href="#" onClick="{{ onLogoClick }}" style="font-size:15px; font-weight:700; letter-spacing:0.01em; color:#f3f8ff; cursor:pointer;" style-hover="color:#bff2ff;">POSCO A&amp;C AX경진대회</a>
+    <nav id="ax-header-nav" style="display:flex; gap:26px; font-size:13.5px; font-weight:500; color:rgba(232,242,254,0.97);">
+      <a href="#intro">소개</a>
+      <a href="#vibe-coding" onClick="{{ onVibeNav }}">바이브코딩</a>
+      <a href="#example">과제예시</a>
+      <a href="#timeline">일정</a>
+      <a href="#participant">참가대상</a>
+      <a href="#benefit">참가혜택</a>
+      <a href="#award">수상혜택</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#apply" style="display:inline-flex; align-items:center; gap:8px;
+        padding:10px 20px; border-radius:999px; font-size:13.5px; font-weight:700; color:#03101f;
+        background:linear-gradient(95deg,#4de1ff,#2f7bff);
+        box-shadow:0 0 0 1px rgba(160,225,255,0.4) inset, 0 6px 20px rgba(47,123,255,0.35);
+        transition: box-shadow 0.3s ease, filter 0.3s ease;" style-hover="box-shadow:0 0 0 1px rgba(200,240,255,0.6) inset, 0 8px 28px rgba(47,123,255,0.55), 0 0 32px rgba(77,225,255,0.4); filter:brightness(1.08);">
+      접수하기 <span>→</span>
+    </a>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <div id="hero" ref="{{ heroRef }}" data-screen-label="Hero" style="position:relative; width:100%; min-height:100vh; overflow:hidden; background:
+      radial-gradient(ellipse 80% 60% at 50% 8%, rgba(47,123,255,0.16), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 82% 88%, rgba(77,225,255,0.10), transparent 60%);
+      display:{{ heroDisplay }}; align-items:center; justify-content:center; padding:120px 24px 132px;
+      opacity:{{ heroOpacity }}; transform:{{ heroTransform }}; filter:{{ heroFilter }};
+      pointer-events:{{ heroPointerEvents }};
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1), filter 0.7s ease;">
+
+    <!-- moving light sweep -->
+    <div style="position:absolute; top:-40%; left:-20%; width:140%; height:120%; pointer-events:none;
+        background: linear-gradient(100deg, transparent 40%, rgba(77,225,255,0.05) 50%, transparent 60%);
+        animation: sweepLight 14s ease-in-out infinite;"></div>
+
+    <!-- noise / texture overlay -->
+    <div style="position:absolute; inset:0; pointer-events:none; opacity:0.035; mix-blend-mode:overlay;
+        background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.6) 0px, transparent 1px, transparent 2px);"></div>
+
+    <!-- giant background wordmark -->
+    <div style="position: absolute; left: 50%; bottom: 2%; transform: translate(-50%,0); width: 100%; text-align: center; pointer-events: none; user-select: none; white-space: nowrap; font-family: 'Paperlogy', sans-serif; font-weight: 800; letter-spacing: 0.02em; font-size: clamp(90px, 14vw, 260px); color: #266EDB1C; text-shadow: 0 0 60px rgba(77,225,255,0.12)">POSCO A&amp;C</div>
+
+    <!-- particles -->
+    <sc-for list="{{ particles }}" as="p" hint-placeholder-count="18">
+      <div style="position:absolute; left:{{ p.left }}%; top:{{ p.top }}%; width:{{ p.size }}px; height:{{ p.size }}px;
+          border-radius:50%; background:radial-gradient(circle, rgba(120,200,255,0.9), rgba(77,225,255,0) 70%);
+          pointer-events:none; --pOpacity:{{ p.opacity }};
+          animation: particleFloat {{ p.duration }}s ease-in-out {{ p.delay }}s infinite;"></div>
+    </sc-for>
+
+    <!-- main content column -->
+    <div style="position:relative; z-index:2; display:flex; flex-direction:column; align-items:center;
+        width:100%; max-width:900px; padding:0 24px; text-align:center;">
+
+      <!-- event label -->
+      <div style="opacity:0; animation: fadeIn 1s ease-out 0.15s forwards;
+          font-size:13px; font-weight:600; letter-spacing:0.28em; color:rgba(180,215,255,0.65);
+          margin-bottom:36px;">
+        2026 AX경진대회
+      </div>
+
+      <!-- main copy -->
+      <h1 style="opacity:0; animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;
+          margin:0 0 28px; font-weight:600; font-size:clamp(30px, 3.6vw, 52px); line-height:1.42;
+          letter-spacing:-0.01em; color:#f3f8ff;">
+        <span style="font-size:0.6em; font-weight:300; color:rgba(236,246,255,0.97);">내 업무를 입력하는 순간,</span><br>
+        <span style="background:linear-gradient(90deg, #dff2ff 0%, #4de1ff 55%, #2f7bff 100%);
+            -webkit-background-clip:text; background-clip:text; color:transparent;">AI Agent가 시작됩니다.</span>
+      </h1>
+
+      <!-- subcopy -->
+      <p style="opacity:0; animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.75s forwards;
+          margin:0 0 44px; font-size:16.5px; line-height:1.85; color:#E8F2FEF7; max-width:560px;">
+        반복되는 업무와 불편한 프로세스를<br>
+        바이브코딩으로 직접 바꿔보는<br>
+        <span style="background:linear-gradient(90deg, #dff2ff 0%, #4de1ff 55%, #2f7bff 100%);
+            -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:600;">POSCO A&amp;C 사내 AX경진대회</span>입니다.
+      </p>
+
+      <!-- prompt bar -->
+      <div style="opacity:0; animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 1.05s forwards;
+          width:min(640px, 92vw); display:flex; align-items:center; gap:16px;
+          padding:20px 26px; border-radius:20px;
+          background:rgba(255,255,255,0.045); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+          border:1px solid {{ promptBorder }};
+          box-shadow: {{ promptShadow }};
+          transition: box-shadow 0.9s ease, border-color 0.9s ease;">
+        <div style="width:9px; height:9px; border-radius:50%; flex:none;
+            background:radial-gradient(circle, #7fe8ff, #2f7bff); box-shadow:0 0 10px rgba(77,225,255,0.85);
+            animation: glowPulse 2.4s ease-in-out infinite;"></div>
+        <div style="flex:1; text-align:left; font-size:17px; font-weight:400; color:#e7f3ff; letter-spacing:0.01em;
+            white-space:nowrap; overflow:hidden;">
+          {{ typedText }}<span style="display:inline-block; width:2px; height:19px; vertical-align:-3px; margin-left:2px;
+              background:#4de1ff; opacity:1; animation:{{ cursorAnim }};"></span>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <a href="#intro" onClick="{{ onCtaClick }}" onMouseEnter="{{ onCtaEnter }}" onMouseLeave="{{ onCtaLeave }}" style="margin-top:38px; opacity:{{ ctaOpacity }}; transform:{{ ctaHoverTransform }};
+          transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.28s cubic-bezier(0.16,1,0.3,1),
+                      box-shadow 0.3s ease, filter 0.3s ease;
+          display:inline-flex; align-items:center; gap:12px; cursor:pointer;
+          padding:19px 46px; border-radius:999px; font-size:17px; font-weight:700; letter-spacing:0.02em;
+          color:#03101f; border:none; background:linear-gradient(95deg, #4de1ff 0%, #2f7bff 100%);
+          box-shadow:{{ ctaShadow }};
+          filter:{{ ctaFilter }};
+          animation:{{ ctaGlowAnim }};">
+        AX경진대회 START <span style="font-weight:800; display:inline-block; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); transform:{{ ctaArrowTransform }};">→</span>
+      </a>
+
+      <!-- info chips -->
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:48px;
+          opacity:{{ ctaOpacity }}; transition: opacity 1s ease 0.15s;">
+        <sc-for list="{{ infoChips }}" as="chip" hint-placeholder-count="4">
+          <div style="padding:9px 18px; border-radius:999px; border:1px solid rgba(255,255,255,0.1);
+              background:rgba(255,255,255,0.03); font-size:13px; color:rgba(210,225,245,0.65); white-space:nowrap;">
+            {{ chip.label }}
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- hero footer signature -->
+    <div style="position:absolute; left:50%; bottom:34px; transform:translateX(-50%); z-index:2;
+        opacity:0; animation: fadeIn 1.2s ease-out 1.6s forwards;
+        font-size:12.5px; letter-spacing:0.14em; color:rgba(170,200,235,0.42); white-space:nowrap;">
+      POSCO A&amp;C&nbsp;&nbsp;|&nbsp;&nbsp;디지털혁신섹션
+    </div>
+  </div>
+
+  <div style="opacity:{{ contentOpacity }}; transform:{{ contentTransform }};
+      transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);">
+
+  <!-- ===================== 01 경진대회 소개 ===================== -->
+  <section class="ax-section" id="intro" data-screen-label="01 Intro" style="position:relative;
+      ">
+    <div style="max-width:1160px; margin:0 auto; display:flex; flex-direction:column; align-items:center; text-align:center;">
+      <div class="ax-label">01. AX경진대회</div>
+      <div data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); max-width:720px;">
+        <h2 style="margin:0 0 24px; min-height:2.8em; display:grid; place-items:center; font-size:clamp(28px,3.2vw,42px); font-weight:600; color:#f3f8ff; line-height:1.42; letter-spacing:-0.01em;">
+          업무를 가장 잘 아는 사람이<br>
+          <span style="background: linear-gradient(90deg, #dff2ff 0%, #4de1ff 55%, #2f7bff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 50px">더 나은 일하는 방식을 만듭니다.</span>
+        </h2>
+        <p style="margin: 0 0 30px; font-size: 16px; line-height: 1.95; color: rgba(232,242,254,0.97); font-weight: 500">
+          AX경진대회는 현업 직원이 직접 업무개선 아이디어를 발굴하고,<br>작은 범위에서 먼저 만들어보고<br>
+          실제 업무 흐름에 적용 가능한지 확인하는 실험형 경진대회입니다.
+        </p>
+        <p style="margin:0 0 36px; font-size:17px; line-height:1.7; font-weight:600; color:#f3f8ff;">
+          중요한 것은 화려한 화면보다<br>
+          <span style="background:linear-gradient(90deg, #dff2ff 0%, #4de1ff 55%, #2f7bff 100%);
+              -webkit-background-clip:text; background-clip:text; color:transparent;">실제 업무에 도움이 되는 것입니다.</span>
+        </p>
+        <a href="#vibe-coding" onClick="{{ onVibeNav }}" style="display:inline-flex; align-items:center; gap:9px;
+            padding:12px 26px; border-radius:999px; font-size:14px; font-weight:600; letter-spacing:0.01em;
+            color:#cdeeff; border:1px solid rgba(120,200,255,0.35); background:rgba(77,225,255,0.045);
+            backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, transform 0.3s ease;" style-hover="border-color:rgba(120,220,255,0.7); box-shadow:0 0 26px rgba(77,178,255,0.3); background:rgba(77,225,255,0.09); transform:translateY(-2px);">
+          바이브코딩이란? <span style="font-size:12px;">↓</span>
+        </a>
+      </div>
+
+      <!-- flow motion graphic -->
+      <div id="ax-flow" data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s;
+          margin-top:80px; width:100%; display:flex; align-items:center; justify-content:center; gap:0;">
+        <sc-for list="{{ flowNodes }}" as="n" hint-placeholder-count="3">
+          <div style="display:contents;">
+            <div style="position:relative; flex:1; max-width:300px; padding:34px 26px; border-radius:20px;
+                background:{{ n.cardBg }}; backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+                border:1px solid {{ n.cardBorder }}; box-shadow:{{ n.cardShadow }};
+                animation: nodeFloat {{ n.floatDur }}s ease-in-out {{ n.floatDelay }}s infinite;
+                transition: border-color 0.35s ease, box-shadow 0.35s ease;" style-hover="border-color:rgba(120,220,255,0.6);">
+              <div style="width:38px; height:38px; margin:0 auto 16px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+                  font-size:14px; font-weight:800; color:#03101f; background:linear-gradient(135deg,#4de1ff,#2f7bff);
+                  box-shadow:0 6px 16px rgba(47,123,255,0.4), 0 0 18px rgba(77,225,255,0.3);">{{ n.num }}</div>
+              <div style="font-size:16.5px; font-weight:700; color:#f3f8ff; margin-bottom:9px;">{{ n.title }}</div>
+              <div style="font-size:13px; line-height:1.65; color:rgba(228,238,252,0.95);">{{ n.desc }}</div>
+            </div>
+            <sc-if value="{{ n.hasConn }}" hint-placeholder-val="{{ true }}">
+              <div class="ax-flow-conn" style="flex:none; width:56px; height:2px; position:relative; overflow:hidden;
+                  background:rgba(120,190,255,0.18); border-radius:2px;">
+                <div style="position:absolute; top:0; left:0; height:100%; width:40%;
+                    background:linear-gradient(90deg, transparent, #6fe3ff, transparent);
+                    animation: linePulse 2.4s linear {{ n.pulseDelay }}s infinite;"></div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 02 바이브코딩 ===================== -->
+  <section class="ax-section" id="vibe-coding" data-screen-label="02 Vibecoding" style="position:relative;
+      ">
+    <div style="max-width:820px; margin:0 auto; text-align:center;">
+      <div class="ax-label">02. 바이브코딩</div>
+      <div data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);">
+        <h2 style="margin:0 0 24px; min-height:2.8em; display:grid; place-items:center; font-size:clamp(28px,3.2vw,42px); font-weight:600; color:#f3f8ff; line-height:1.4; letter-spacing:-0.01em;">
+          바이브코딩이 뭔가요?
+        </h2>
+        <p style="margin:0 0 20px; font-size:16.5px; line-height:1.95; color:rgba(232,242,254,0.97);">
+          코드를 직접 짜는 것이 아니라, 만들고 싶은 업무 도구를 <span style="color:#6fc6ff; font-weight:600;">말로 설명하면</span><br>
+          AI가 화면·기능·자동화 흐름을 만들어주는 방식입니다.
+        </p>
+        <p style="margin:0; font-size:16.5px; line-height:1.95; color:rgba(230,240,253,0.96);">
+          무엇을 만들지 설명하고, 결과를 확인하며 조금씩 다듬어갑니다.<br>
+          중요한 건 개발 지식이 아니라 <span style="color:#6fc6ff; font-weight:600;">내 업무를 아는 시선</span>입니다.
+        </p>
+      </div>
+
+      <!-- 대화형 데모 -->
+      <div ref="{{ chatRef }}" data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s;
+          max-width:660px; margin:56px auto 0; text-align:left; border-radius:22px; overflow:hidden;
+          background:linear-gradient(180deg, rgba(16,26,44,0.9), rgba(9,16,30,0.95));
+          border:1px solid rgba(120,180,255,0.18); box-shadow:0 26px 64px rgba(2,6,14,0.5);">
+        <div style="display:flex; align-items:center; gap:8px; padding:16px 24px; border-bottom:1px solid rgba(255,255,255,0.06);">
+          <div style="width:8px; height:8px; border-radius:50%; background:#4de1ff; box-shadow:0 0 8px rgba(77,225,255,0.8);"></div>
+          <div style="font-size:12.5px; font-weight:600; letter-spacing:0.06em; color:rgba(180,210,245,0.7);">AI와 대화로 만드는 과정</div>
+        </div>
+
+        <div style="padding:26px 24px; display:flex; flex-direction:column; gap:16px; min-height:520px;">
+          <!-- user bubble -->
+          <div style="display:flex; justify-content:flex-end;">
+            <div style="max-width:82%; padding:14px 18px; border-radius:14px 14px 4px 14px;
+                background:rgba(255,255,255,0.055); border:1px solid rgba(255,255,255,0.1);">
+              <div style="font-size:11px; font-weight:700; letter-spacing:0.06em; color:rgba(150,190,235,0.7); margin-bottom:6px;">나</div>
+              <div style="font-size:14px; line-height:1.7; color:#eaf3ff; min-height:1.7em;">{{ chatUserText }}<span style="display:{{ chatUserCaret }}; width:2px; height:14px; vertical-align:-2px; margin-left:1px; background:#4de1ff; animation:blinkCursor 1.1s step-end infinite;"></span></div>
+            </div>
+          </div>
+
+          <!-- ai bubble -->
+          <sc-if value="{{ chatShowAi }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; justify-content:flex-start; animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both;">
+              <div style="max-width:82%; padding:14px 18px; border-radius:14px 14px 14px 4px;
+                  background:rgba(77,178,255,0.13); border:1px solid rgba(120,200,255,0.35);">
+                <div style="font-size:11px; font-weight:700; letter-spacing:0.06em; color:#7cc4ff; margin-bottom:6px;">AI</div>
+                <div style="font-size:14px; line-height:1.7; color:#eaf3ff; min-height:1.7em;">{{ chatAiText }}<span style="display:{{ chatAiCaret }}; width:2px; height:14px; vertical-align:-2px; margin-left:1px; background:#7cc4ff; animation:blinkCursor 1.1s step-end infinite;"></span></div>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- result card -->
+          <sc-if value="{{ chatShowResult }}" hint-placeholder-val="{{ false }}">
+            <div style="position:relative; overflow:hidden; margin-top:6px; padding:20px 22px; border-radius:16px; animation: resultGenerate 0.9s cubic-bezier(0.16,1,0.3,1) both;
+                background:linear-gradient(160deg, rgba(77,225,255,0.09), rgba(255,255,255,0.02));
+                border:1px solid rgba(120,205,255,0.35); box-shadow:0 0 34px rgba(77,178,255,0.14);">
+              <div style="position:absolute; top:0; bottom:0; left:0; width:40%; pointer-events:none;
+                  background:linear-gradient(90deg, transparent, rgba(150,220,255,0.22), transparent);
+                  animation: resultScan 1.1s ease-out 0.15s both;"></div>
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+                <div style="width:22px; height:22px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center;
+                    background:linear-gradient(135deg,#4de1ff,#2f7bff); color:#03101f; font-size:13px; font-weight:800;">✓</div>
+                <div style="font-size:14.5px; font-weight:700; color:#f3f8ff;">참가 접수 페이지 생성 완료</div>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:9px; margin-bottom:16px;">
+                <sc-for list="{{ chatResultItems }}" as="item" hint-placeholder-count="3">
+                  <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:rgba(210,224,245,0.75);
+                      animation: resultItemIn 0.4s ease-out {{ item.delay }}s both;">
+                    <div style="width:5px; height:5px; border-radius:50%; background:#4de1ff; flex:none;"></div>{{ item.label }}
+                  </div>
+                </sc-for>
+              </div>
+              <div style="display:inline-flex; align-items:center; gap:8px; padding:10px 22px; border-radius:10px;
+                  font-size:13px; font-weight:700; color:#03101f; background:linear-gradient(95deg,#4de1ff,#2f7bff);
+                  box-shadow:0 6px 18px rgba(47,123,255,0.35);">신청하기 <span>→</span></div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <!-- 후기 카드 -->
+      <div data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.12s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.12s;
+          max-width:640px; margin:56px auto 0; text-align:center;
+          background:rgba(255,255,255,0.035); border:1px solid rgba(120,180,255,0.16); border-radius:20px;
+          box-shadow:0 24px 60px rgba(2,6,14,0.5); padding:40px 40px;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:22px;">
+          <div style="width:48px; height:48px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center;
+              background:linear-gradient(135deg,#4de1ff,#2f7bff); font-weight:700; font-size:14px; color:#03101f;">하O</div>
+          <div>
+            <div style="font-weight:700; font-size:15px; color:#f3f8ff; margin-bottom:3px;">하O 과장</div>
+            <div style="font-size:12px; color:rgba(150,190,235,0.65);">디지털혁신섹션 · AX경진대회 담당자 후기</div>
+          </div>
+        </div>
+        <p style="margin:0; font-size:14.5px; line-height:1.95; color:rgba(234,244,255,0.97);">개발 언어라곤 아무것도 모르는 담당자도,<br>직접! 확인해 보고자 바이브코딩으로<br>지금 보시는 홈페이지를 제작해봤습니다.<br><br>
+          파이썬도, C언어도 몰랐지만<br>중요한 건 <span style="color: rgb(111, 198, 255); font-weight: 600;">개발 지식</span>이 아니었습니다.<br><br>
+          내가 바꾸고 싶은 <span style="color: rgb(111, 198, 255); font-weight: 600;">업무</span>를 알고,<br>원하는 <span style="color: rgb(111, 198, 255); font-weight: 600;">화면과 기능</span>을 설명할 수 있다면 충분했습니다.<br><br>
+          먼저 시도하는 사람이<br>새로운 일하는 방식을 선점합니다.<br><br>
+          AX경진대회에서 시작해보세요.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 03 과제예시 ===================== -->
+  <section class="ax-section" id="example" data-screen-label="03 Example" style="position:relative;
+      ">
+    <div style="max-width:1440px; margin:0 auto; display:flex; flex-direction:column;">
+      <div class="ax-label">03. 과제예시</div>
+      <h2 data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+          text-align:center; margin:0 0 24px; min-height:2.8em; display:grid; place-items:center; font-size:clamp(28px,3.2vw,42px); font-weight:600; color:#f3f8ff; letter-spacing:-0.01em; line-height:1.4;">
+        이런 과제를 만들 수 있어요
+      </h2>
+      <p data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s;
+          text-align:center; max-width:620px; margin:0 auto 40px; font-size:16px; line-height:1.9; color:#E8F2FEF7;">
+        과제는 거창할 필요가 없습니다.<br>제일 중요한 건, 업무에 어떻게 적용되는지입니다.
+      </p>
+      <div id="ax-example-grid" style="max-width:1000px; width:100%; margin:0 auto; display:grid; grid-template-columns:repeat(2, 1fr); gap:22px;">
+        <sc-for list="{{ exampleCards }}" as="ex" hint-placeholder-count="4">
+          <div data-reveal="" style="opacity:0; transform:translateY(24px);
+              transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1) {{ ex.delay }}s, transform 0.7s cubic-bezier(0.16,1,0.3,1) {{ ex.delay }}s;">
+            <div class="ax-appwin" style="animation: nodeFloat {{ ex.floatDur }}s ease-in-out {{ ex.floatDelay }}s infinite;">
+              <div class="ax-appbar">
+                <span class="ax-dot" style="background:rgba(120,190,255,0.4);"></span>
+                <span class="ax-dot" style="background:rgba(77,178,255,0.65);"></span>
+                <span class="ax-dot" style="background:#4de1ff;"></span>
+                <span class="fname">{{ ex.file }}</span>
+              </div>
+              <div class="ax-appbody">
+                <div style="display:flex; align-items:center; gap:13px; margin-bottom:14px;">
+                  <div style="width:38px; height:38px; border-radius:11px; flex:none; display:flex; align-items:center; justify-content:center;
+                      font-size:14px; font-weight:800; color:#03101f; background:linear-gradient(135deg,#4de1ff,#2f7bff);
+                      box-shadow:0 6px 16px rgba(47,123,255,0.4), 0 0 18px rgba(77,225,255,0.3);">{{ ex.num }}</div>
+                  <div style="font-size:17px; font-weight:700; color:#f3f8ff;">{{ ex.title }}</div>
+                </div>
+                <div style="font-size:14.5px; line-height:1.7; color:rgba(228,238,252,0.95); margin-bottom:18px;">{{ ex.desc }}</div>
+                <div class="ax-skl" style="width:88%;"></div>
+                <div class="ax-skl" style="width:64%; margin-bottom:20px;"></div>
+                <div style="align-self:flex-start; margin-top:auto; padding:6px 14px; border-radius:999px; background:rgba(77,225,255,0.09);
+                    border:1px solid rgba(120,200,255,0.25); font-size:12px; font-weight:600; color:rgba(150,220,255,0.85);">{{ ex.tag }}</div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 04 주요 일정 ===================== -->
+  <section class="ax-section" id="timeline" data-screen-label="04 Roadmap" style="position:relative;
+      ">
+    <div style="max-width:1080px; margin:0 auto;">
+      <div class="ax-label">04. ROADMAP</div>
+      <h2 data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+          text-align:center; margin:0 0 24px; min-height:2.8em; display:grid; place-items:center; font-size:clamp(28px,3.2vw,42px); font-weight:600; color:#f3f8ff; letter-spacing:-0.01em; line-height:1.4;">
+        내 업무를 바꾸는 여정
+      </h2>
+      <p data-reveal="" style="opacity: 0; transform: translateY(24px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.06s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.06s; text-align: center; max-width: 620px; margin: 0 auto 56px; font-size: 16px; line-height: 1.9; color: #E8F2FEF7">
+        접수부터 교육·멘토링, 발표까지<br>업무개선 아이디어를 실제로 작동하는 결과물로 만듭니다.
+      </p>
+
+      <div id="ax-tl-container" style="position:relative; max-width:900px; margin:0 auto;">
+        <div id="ax-tl-vline" style="position:absolute; top:8px; bottom:40px; left:50%; transform:translateX(-50%); width:2px; background:rgba(120,160,220,0.13);">
+          <div id="ax-tl-progress" class="ax-vline-progress" style="position:absolute; top:0; left:0; width:100%; background:linear-gradient(180deg, rgba(143,233,255,0.95), rgba(77,225,255,0.9) 45%, rgba(47,123,255,0.85)); box-shadow:0 0 10px rgba(77,225,255,0.5);"></div>
+        </div>
+
+        <sc-for list="{{ roadmapSteps }}" as="t" hint-placeholder-count="6">
+          <div class="ax-tl-item" data-reveal="" style="opacity:0; transform:translateY(22px);
+              transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1) {{ t.delay }}s, transform 0.7s cubic-bezier(0.16,1,0.3,1) {{ t.delay }}s;
+              position:relative; display:flex; align-items:flex-start; margin-bottom:64px;">
+            <div class="ax-tl-node" style="position:absolute; left:50%; top:32px; width:13px; height:13px; border-radius:50%; z-index:2;"></div>
+            <sc-if value="{{ t.isLeft }}" hint-placeholder-val="{{ true }}">
+              <div class="ax-tl-hline" style="position:absolute; right:50%; top:32px; height:2px; z-index:1;"></div>
+              <div class="ax-tl-side" style="width:50%; padding-right:80px; text-align:right;">
+                <div class="ax-tl-num" style="font-size:58px; font-weight:300; line-height:1; letter-spacing:-0.03em; margin-bottom:8px;">{{ t.num }}</div>
+                <div style="font-size:11.5px; font-weight:600; letter-spacing:0.08em; color:rgba(150,220,255,0.72); margin-bottom:12px;">{{ t.date }}</div>
+                <div style="font-size:20px; font-weight:700; color:#f3f8ff; margin-bottom:10px;">{{ t.title }}</div>
+                <div style="display: inline-block; text-align: right; max-width: 400px; font-size: 14px; line-height: 1.7; color: rgba(228,238,252,0.95)">{{ t.desc }}</div>
+              </div>
+              <div class="ax-tl-spacer" style="width:50%;"></div>
+            </sc-if>
+            <sc-if value="{{ t.isRight }}" hint-placeholder-val="{{ true }}">
+              <div class="ax-tl-spacer" style="width:50%;"></div>
+              <div class="ax-tl-hline" style="position:absolute; left:50%; top:32px; height:2px; z-index:1;"></div>
+              <div class="ax-tl-side" style="width:50%; padding-left:80px; text-align:left;">
+                <div class="ax-tl-num" style="font-size:58px; font-weight:300; line-height:1; letter-spacing:-0.03em; margin-bottom:8px;">{{ t.num }}</div>
+                <div style="font-size:11.5px; font-weight:600; letter-spacing:0.08em; color:rgba(150,220,255,0.72); margin-bottom:12px;">{{ t.date }}</div>
+                <div style="font-size:20px; font-weight:700; color:#f3f8ff; margin-bottom:10px;">{{ t.title }}</div>
+                <div style="display: inline-block; text-align: left; max-width: 400px; font-size: 14px; line-height: 1.7; color: rgba(228,238,252,0.95); width: 100%; height: 100%">{{ t.desc }}</div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+
+      <div data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s;
+          text-align:center; margin-top:12px; font-size:13px; color:rgba(196,216,240,0.62);">
+        세부 일정은 운영 상황에 따라 일부 조정될 수 있습니다.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 06 참가대상 및 선정기준 ===================== -->
+  <section class="ax-section" id="participant" data-screen-label="06 Participant" style="position:relative; overflow:hidden;
+      ">
+    <!-- soft decorative orbs -->
+    <div style="position:absolute; top:8%; left:6%; width:280px; height:280px; border-radius:50%; pointer-events:none; z-index:0;
+        background:radial-gradient(circle, rgba(77,178,255,0.12), transparent 65%); animation: nodeFloat 7s ease-in-out infinite;"></div>
+    <div style="position:absolute; bottom:6%; right:8%; width:240px; height:240px; border-radius:50%; pointer-events:none; z-index:0;
+        background:radial-gradient(circle, rgba(77,225,255,0.1), transparent 65%); animation: nodeFloat 8.5s ease-in-out 1s infinite;"></div>
+
+    <div style="max-width:1040px; margin:0 auto; position:relative; z-index:1;">
+      <div class="ax-label">05. 참가대상</div>
+      <h2 data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+          text-align:center; margin:0 0 24px; min-height:2.8em; display:grid; place-items:center; font-size:clamp(28px,3.2vw,42px); font-weight:600; color:#f3f8ff; letter-spacing:-0.01em; line-height:1.4;">
+        업무를 아는 사람이면, <span style="background:linear-gradient(100deg,#7cc4ff,#4de1ff,#2f7bff); -webkit-background-clip:text; background-clip:text; color:transparent;">누구나</span>
+      </h2>
+      <p data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s;
+          text-align:center; max-width:620px; margin:0 auto 56px; font-size:16px; line-height:1.9; color:#E8F2FEF7;">
+        개발 경험은 필요하지 않습니다.<br>내 업무를 바꾸고 싶은 마음이면 충분합니다.
+      </p>
+
+      <div id="ax-participant-grid" style="display:grid; grid-template-columns:1fr 1px 1fr; align-items:center; gap:0;
+          max-width:860px; margin:100px auto 0; padding:8px 0;">
+        <!-- 참가대상 -->
+        <div data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1) 0.12s, transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.12s;
+            text-align:center; padding:20px 40px;">
+          <div style="font-size:13px; font-weight:600; letter-spacing:0.14em; color:rgba(120,190,255,0.72); margin-bottom:20px;">참가대상</div>
+          <div style="font-size:clamp(30px,3.6vw,44px); font-weight:800; line-height:1.15; margin-bottom:18px;
+              background:linear-gradient(100deg,#eaf6ff,#7cc4ff,#4de1ff); -webkit-background-clip:text; background-clip:text; color:transparent;">개인 · 2인 1팀</div>
+          <div style="font-size:15px; line-height:1.8; color:rgba(210,224,246,0.78);">업무개선 아이디어를 직접<br>구현해보고 싶은 직원 누구나</div>
+        </div>
+
+        <!-- divider -->
+        <div class="ax-part-divider" style="width:1px; align-self:stretch; margin:14px 0;
+            background:linear-gradient(180deg, transparent, rgba(120,190,255,0.35), transparent);"></div>
+
+        <!-- 선정규모 -->
+        <div data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s, transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s;
+            text-align:center; padding:20px 40px;">
+          <div style="font-size:13px; font-weight:600; letter-spacing:0.14em; color:rgba(120,190,255,0.72); margin-bottom:20px;">선정규모</div>
+          <div style="font-size:clamp(30px,3.6vw,44px); font-weight:800; line-height:1.15; margin-bottom:18px;
+              background:linear-gradient(100deg,#eaf6ff,#7cc4ff,#4de1ff); -webkit-background-clip:text; background-clip:text; color:transparent;">10개 팀 내외</div>
+          <div style="font-size:15px; line-height:1.8; color:rgba(210,224,246,0.78);">참여 의지와 실제 업무<br>적용성을 중심으로 선정합니다</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 07 참가혜택 ===================== -->
+  <section class="ax-section" id="benefit" data-screen-label="07 Benefit" style="position:relative;
+      ">
+    <div style="max-width:1440px; margin:0 auto;">
+      <div class="ax-label">06. 참가혜택</div>
+      <h2 data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+          text-align:center; margin:0 0 24px; min-height:2.8em; display:grid; place-items:center; font-size:clamp(28px,3.2vw,42px); font-weight:600; color:#f3f8ff; letter-spacing:-0.01em; line-height:1.4;">
+        아이디어를 구현할 수 있도록 지원합니다
+      </h2>
+      <p data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s;
+          text-align:center; max-width:620px; margin:0 auto 56px; font-size:16px; line-height:1.9; color:#E8F2FEF7;">
+        선정된 10개 팀에는<br>업무개선 PoC 개발에 필요한 교육, 멘토링,<br>AI 개발도구 이용권을 제공합니다.
+      </p>
+      <div class="ax-blist">
+        <sc-for list="{{ benefitCards }}" as="b" hint-placeholder-count="4">
+          <div data-reveal="" class="ax-brow" style="opacity:0; transform:translateY(20px);
+              transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1) {{ b.delay }}s, transform 0.7s cubic-bezier(0.16,1,0.3,1) {{ b.delay }}s, padding 0.4s ease, background 0.4s ease;">
+            <span class="idx">{{ b.num }}</span>
+            <div>
+              <h3>{{ b.title }}</h3>
+              <p>{{ b.desc }}</p>
+            </div>
+            <svg class="chev" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"></path></svg>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 08 수상혜택 ===================== -->
+  <section class="ax-section" id="award" ref="{{ awardRef }}" data-screen-label="08 Award" style="position:relative; overflow:hidden;
+      ">
+
+    <!-- converging stage spotlights -->
+    <div style="position:absolute; inset:0; pointer-events:none; z-index:1; opacity:{{ awardSpotOpacity }}; transition:opacity 1.8s cubic-bezier(0.22,1,0.36,1);">
+      <div style="position:absolute; top:-12%; left:-16%; width:62%; height:150%; transform-origin:50% 0%; transform:rotate(-38deg);
+          background:conic-gradient(from 150deg at 50% 0%, transparent 0deg, rgba(255,255,255,0.27) 30deg, transparent 60deg);
+          filter:blur(28px); mix-blend-mode:screen;
+          -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+          mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);"></div>
+      <div style="position:absolute; top:-12%; right:-16%; width:62%; height:150%; transform-origin:50% 0%; transform:rotate(38deg);
+          background:conic-gradient(from 150deg at 50% 0%, transparent 0deg, rgba(255,255,255,0.27) 30deg, transparent 60deg);
+          filter:blur(28px); mix-blend-mode:screen;
+          -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+          mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);"></div>
+    </div>
+
+    <div style="max-width:1200px; margin:0 auto; text-align:center; position:relative; z-index:2;">
+      <div class="ax-label">07. 수상혜택</div>
+      <h2 data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+          margin:0 0 24px; min-height:2.8em; display:grid; place-items:center; white-space:nowrap; font-size:clamp(28px,3.2vw,42px); font-weight:600; color:#f3f8ff; letter-spacing:-0.01em; line-height:1.4;">
+        <span>우수과제는 <span style="color:#f3f8ff;">성과로 인정</span>받습니다</span>
+      </h2>
+      <p data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s;
+          text-align:center; max-width:620px; margin:0 auto 8px; font-size:16px; line-height:1.9; color:#E8F2FEF7;">
+        10개 참가팀 모두 시상 검토 대상이며, 우수과제는 대상·최우수상·우수상으로 선정될 예정입니다.
+      </p>
+      <p data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.14s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.14s;
+          text-align:center; max-width:620px; margin:0 auto 56px; font-size:16px; line-height:1.9; color:#E8F2FEF7;">
+        세부 시상 및 포상 혜택은 추후 확정하여 별도 안내 예정입니다.
+      </p>
+
+      <!-- award tarot spread -->
+      <div id="ax-award-spread" style="perspective:1500px; display:grid; grid-template-columns:1fr 1.1fr 1fr; align-items:center; gap:20px; max-width:1000px; margin:36px auto 0;">
+
+        <!-- 02 최우수상 (left) -->
+        <div class="ax-award al" data-reveal="" style="opacity:0; transform:translateY(30px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.28s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.28s; position:relative;">
+          <div class="ax-tarot-wrap ax-tarot-left">
+            <div class="ax-flip">
+              <div class="ax-flip-inner">
+                <div class="ax-flip-front" style="background:linear-gradient(180deg, rgba(30,44,72,0.5), rgba(10,18,32,0.88)); border:1px solid rgba(120,180,255,0.18); box-shadow:0 20px 50px rgba(3,8,18,0.5);">
+                  <div style="font-size:12px; font-weight:700; letter-spacing:0.16em; color:rgba(120,220,255,0.9); text-transform:uppercase; margin-bottom:10px;">2nd Prize</div>
+                  <div style="font-size:60px; font-weight:300; line-height:1; letter-spacing:-0.03em; color:#9fccff; margin-bottom:14px;">02</div>
+                  <div style="font-size:24px; font-weight:800; color:#eaf3ff; letter-spacing:0.01em;">최우수상</div>
+                </div>
+                <div class="ax-flip-back" style="background:linear-gradient(180deg, rgba(30,44,72,0.56), rgba(10,18,32,0.92)); border:1px solid rgba(120,205,255,0.35); box-shadow:0 20px 50px rgba(3,8,18,0.5);">
+                  <div style="font-size:11.5px; font-weight:700; letter-spacing:0.16em; color:rgba(160,190,225,0.7); text-transform:uppercase; margin-bottom:10px;">2nd Prize</div>
+                  <div style="font-size:22px; font-weight:800; color:#4de1ff; margin-bottom:16px;">최우수상</div>
+                  <div style="font-size:15px; line-height:1.75; color:rgba(234,244,255,0.97);">현업 문제를 효과적으로<br>해결한 우수 실행 과제</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 01 대상 (center) -->
+        <div class="ax-award ac" data-reveal="" style="opacity:0; transform:translateY(30px); transition:opacity 1s cubic-bezier(0.16,1,0.3,1) 0.18s, transform 1s cubic-bezier(0.16,1,0.3,1) 0.18s; position:relative;">
+          <div class="ax-confetti"><i style="margin-left:15px; width:6px; height:11px; border-radius:2px; background:#4de1ff; --tx:65px; --ty:-36px; --rot:178deg; --d:0.17s;"></i><i style="margin-left:-8px; width:10px; height:10px; border-radius:50%; background:#2f7bff; --tx:110px; --ty:22px; --rot:-289deg; --d:0.07s;"></i><i style="margin-left:14px; width:8px; height:11px; border-radius:2px; background:#8fe9ff; --tx:-19px; --ty:-79px; --rot:-171deg; --d:0.17s;"></i><i style="margin-left:0px; width:7px; height:10px; border-radius:2px; background:#ffffff; --tx:-21px; --ty:-66px; --rot:125deg; --d:0.07s;"></i><i style="margin-left:10px; width:7px; height:15px; border-radius:50%; background:#a9d6ff; --tx:112px; --ty:-98px; --rot:-77deg; --d:0.00s;"></i><i style="margin-left:-10px; width:10px; height:10px; border-radius:50%; background:#ffd77a; --tx:12px; --ty:-125px; --rot:-210deg; --d:0.06s;"></i><i style="margin-left:10px; width:10px; height:14px; border-radius:50%; background:#4de1ff; --tx:-36px; --ty:-94px; --rot:-244deg; --d:0.14s;"></i><i style="margin-left:-4px; width:10px; height:13px; border-radius:2px; background:#dff2ff; --tx:-58px; --ty:-85px; --rot:-79deg; --d:0.10s;"></i><i style="margin-left:-11px; width:10px; height:12px; border-radius:2px; background:#4de1ff; --tx:-146px; --ty:-80px; --rot:-111deg; --d:0.06s;"></i><i style="margin-left:4px; width:10px; height:11px; border-radius:2px; background:#2f7bff; --tx:-89px; --ty:-145px; --rot:60deg; --d:0.01s;"></i><i style="margin-left:12px; width:8px; height:10px; border-radius:2px; background:#8fe9ff; --tx:27px; --ty:-156px; --rot:-221deg; --d:0.07s;"></i><i style="margin-left:6px; width:6px; height:9px; border-radius:2px; background:#ffffff; --tx:-182px; --ty:0px; --rot:11deg; --d:0.06s;"></i><i style="margin-left:8px; width:7px; height:13px; border-radius:50%; background:#a9d6ff; --tx:118px; --ty:20px; --rot:-212deg; --d:0.01s;"></i><i style="margin-left:19px; width:9px; height:13px; border-radius:2px; background:#ffd77a; --tx:26px; --ty:-92px; --rot:-185deg; --d:0.04s;"></i><i style="margin-left:3px; width:8px; height:12px; border-radius:2px; background:#4de1ff; --tx:-96px; --ty:-14px; --rot:-263deg; --d:0.04s;"></i><i style="margin-left:12px; width:9px; height:14px; border-radius:2px; background:#dff2ff; --tx:69px; --ty:-146px; --rot:82deg; --d:0.11s;"></i><i style="margin-left:-15px; width:9px; height:11px; border-radius:50%; background:#4de1ff; --tx:143px; --ty:11px; --rot:-188deg; --d:0.12s;"></i><i style="margin-left:8px; width:7px; height:12px; border-radius:2px; background:#2f7bff; --tx:-131px; --ty:-27px; --rot:99deg; --d:0.07s;"></i><i style="margin-left:-2px; width:9px; height:12px; border-radius:50%; background:#8fe9ff; --tx:118px; --ty:-26px; --rot:358deg; --d:0.16s;"></i><i style="margin-left:-3px; width:6px; height:10px; border-radius:50%; background:#ffffff; --tx:-26px; --ty:-150px; --rot:-273deg; --d:0.06s;"></i><i style="margin-left:12px; width:9px; height:13px; border-radius:50%; background:#a9d6ff; --tx:-47px; --ty:-103px; --rot:91deg; --d:0.08s;"></i><i style="margin-left:-9px; width:8px; height:12px; border-radius:2px; background:#ffd77a; --tx:-16px; --ty:-160px; --rot:-315deg; --d:0.10s;"></i><i style="margin-left:6px; width:8px; height:14px; border-radius:50%; background:#4de1ff; --tx:-179px; --ty:-66px; --rot:-195deg; --d:0.12s;"></i><i style="margin-left:16px; width:7px; height:11px; border-radius:50%; background:#dff2ff; --tx:118px; --ty:-29px; --rot:-291deg; --d:0.07s;"></i></div>
+          <div class="ax-tarot-wrap ax-tarot-center">
+            <div class="ax-flip grand">
+              <div class="ax-flip-inner">
+                <div class="ax-flip-front ax-grand-neon" style="overflow:hidden; background:linear-gradient(180deg, rgba(40,64,108,0.64), rgba(10,20,38,0.96)); border:1px solid rgba(120,205,255,0.55); box-shadow:0 30px 70px rgba(3,8,18,0.6), inset 0 1px 0 rgba(180,220,255,0.28), 0 0 54px rgba(77,178,255,0.28);">
+                  <div style="position:absolute; inset:-30%; pointer-events:none; z-index:0; filter:blur(46px); opacity:0.7;">
+                    <div style="position:absolute; top:4%; left:8%; width:60%; height:60%; border-radius:50%; mix-blend-mode:screen; background:radial-gradient(circle, rgba(77,225,255,0.55), transparent 62%); animation: auroraA 14s ease-in-out infinite;"></div>
+                    <div style="position:absolute; top:0; right:4%; width:64%; height:66%; border-radius:50%; mix-blend-mode:screen; background:radial-gradient(circle, rgba(47,123,255,0.55), transparent 62%); animation: auroraB 17s ease-in-out infinite;"></div>
+                  </div>
+                  <div style="position:relative; z-index:1; display:flex; flex-direction:column; align-items:center;">
+                    <div style="font-size:13px; font-weight:700; letter-spacing:0.24em; color:rgba(120,220,255,0.95); text-transform:uppercase; margin-bottom:12px;">1st Prize</div>
+                    <div style="font-size:76px; font-weight:300; line-height:1; letter-spacing:-0.03em; margin-bottom:16px; background:linear-gradient(160deg,#dff2ff,#4de1ff); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 0 30px rgba(120,215,255,0.4);">01</div>
+                    <div style="font-size:34px; font-weight:800; color:#ffffff; letter-spacing:0.01em;">대상</div>
+                  </div>
+                </div>
+                <div class="ax-flip-back" style="background:linear-gradient(180deg, rgba(40,64,108,0.7), rgba(10,20,38,0.97)); border:1px solid rgba(120,205,255,0.6); box-shadow:0 30px 70px rgba(3,8,18,0.6), inset 0 0 22px rgba(77,178,255,0.16);">
+                  <div style="font-size:13px; font-weight:700; letter-spacing:0.24em; color:rgba(160,200,235,0.75); text-transform:uppercase; margin-bottom:12px;">1st Prize</div>
+                  <div style="font-size:28px; font-weight:800; color:#4de1ff; margin-bottom:20px;">대상</div>
+                  <div style="font-size:17px; font-weight:500; line-height:1.75; color:#ffffff;">가장 높은 완성도와<br>업무 적용 가능성을<br>보여준 과제</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 우수상 (right) -->
+        <div class="ax-award ar" data-reveal="" style="opacity:0; transform:translateY(30px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.34s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.34s; position:relative;">
+          <div class="ax-tarot-wrap ax-tarot-right">
+            <div class="ax-flip">
+              <div class="ax-flip-inner">
+                <div class="ax-flip-front" style="background:linear-gradient(180deg, rgba(30,44,72,0.5), rgba(10,18,32,0.88)); border:1px solid rgba(120,180,255,0.18); box-shadow:0 20px 50px rgba(3,8,18,0.5);">
+                  <div style="font-size:12px; font-weight:700; letter-spacing:0.16em; color:rgba(120,220,255,0.9); text-transform:uppercase; margin-bottom:10px;">3rd Prize</div>
+                  <div style="font-size:60px; font-weight:300; line-height:1; letter-spacing:-0.03em; color:#9fccff; margin-bottom:14px;">03</div>
+                  <div style="font-size:24px; font-weight:800; color:#eaf3ff; letter-spacing:0.01em;">우수상</div>
+                </div>
+                <div class="ax-flip-back" style="background:linear-gradient(180deg, rgba(30,44,72,0.56), rgba(10,18,32,0.92)); border:1px solid rgba(120,205,255,0.35); box-shadow:0 20px 50px rgba(3,8,18,0.5);">
+                  <div style="font-size:11.5px; font-weight:700; letter-spacing:0.16em; color:rgba(160,190,225,0.7); text-transform:uppercase; margin-bottom:10px;">3rd Prize</div>
+                  <div style="font-size:22px; font-weight:800; color:#4de1ff; margin-bottom:16px;">우수상</div>
+                  <div style="font-size:15px; line-height:1.75; color:rgba(234,244,255,0.97);">업무개선 아이디어와<br>활용 가능성이 돋보이는 과제</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="" style="opacity:0; transform:translateY(20px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.36s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.36s;
+          text-align:center; margin-top:28px; font-size:13px; color:rgba(150,190,235,0.5); letter-spacing:0.02em;">
+        카드에 마우스를 올리면 세부 내용이 나타납니다.
+      </div>
+
+      <p data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.4s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.4s;
+          margin:44px 0 0; font-size:15.5px; line-height:1.8; color:rgba(228,238,252,0.95);">
+        우수과제는 후속 고도화 및 사내 확산 가능성을 함께 검토합니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== 09 FAQ ===================== -->
+  <section class="ax-section" id="faq" data-screen-label="09 FAQ" style="position:relative;
+      ">
+    <div style="max-width:960px; margin:0 auto;">
+      <div class="ax-label">08. FAQ</div>
+      <h2 data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+          text-align:center; margin:0 0 24px; min-height:2.8em; display:grid; place-items:center; font-size:clamp(28px,3.2vw,42px); font-weight:600; color:#f3f8ff; letter-spacing:-0.01em; line-height:1.4;">
+        자주 묻는 질문
+      </h2>
+      <p data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s;
+          text-align:center; max-width:620px; margin:0 auto 56px; font-size:16px; line-height:1.9; color:#E8F2FEF7;">
+        참여 전 궁금한 내용을 확인해보세요.
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <sc-for list="{{ faqItems }}" as="faq" hint-placeholder-count="6">
+          <div data-reveal="" class="ax-faq-card" style="opacity:0; transform:translateY(20px);
+              transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1) {{ faq.delay }}s, transform 0.7s cubic-bezier(0.16,1,0.3,1) {{ faq.delay }}s,
+                          border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+              border-radius:16px; overflow:hidden;
+              background:{{ faq.cardBg }};
+              border:1px solid {{ faq.cardBorder }};
+              box-shadow:{{ faq.cardShadow }};">
+            <button onClick="{{ faq.toggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between;
+                gap:20px; text-align:left; background:none; border:none; cursor:pointer;
+                padding:24px 28px; font-family:inherit; font-size:16px; font-weight:600; color:#f3f8ff;" style-hover="background:rgba(255,255,255,0.02);">
+              <span>{{ faq.q }}</span>
+              <span style="position:relative; width:18px; height:18px; flex:none;">
+                <span style="position:absolute; top:50%; left:0; width:18px; height:1.5px; background:#8fd8ff; transform:translateY(-50%); border-radius:1px;"></span>
+                <span style="position:absolute; top:0; left:50%; width:1.5px; height:18px; background:#8fd8ff; transform:translateX(-50%) {{ faq.vScale }};
+                    transition:transform 0.35s cubic-bezier(0.4,0,0.2,1); border-radius:1px;"></span>
+              </span>
+            </button>
+            <div style="display:grid; grid-template-rows:{{ faq.rows }}; transition:grid-template-rows 0.45s cubic-bezier(0.4,0,0.2,1);">
+              <div style="overflow:hidden;">
+                <div style="padding:0 28px 26px; font-size:14.5px; line-height:1.85; color:rgba(200,220,245,0.72);
+                    opacity:{{ faq.answerOpacity }}; transition:opacity 0.35s ease {{ faq.answerDelay }};">
+                  {{ faq.a1 }}<br><br>{{ faq.a2 }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s;
+          text-align:center; margin-top:72px; padding-top:56px; border-top:1px solid rgba(255,255,255,0.07);">
+        <div style="font-size:19px; font-weight:600; color:#f3f8ff; line-height:1.6;">
+          궁금한 점이 해결되셨나요?<br>내 업무 아이디어를 AX경진대회에서 실험해보세요.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 10 참가접수 ===================== -->
+  <section class="ax-section" id="apply" data-screen-label="10 Apply" style="position:relative;
+      ">
+    <div style="max-width:640px; margin:0 auto; text-align:center;">
+      <div class="ax-label">09. 참가접수</div>
+      <h2 data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+          margin:0 0 24px; min-height:2.8em; display:grid; place-items:center; font-size:clamp(28px,3.2vw,42px); font-weight:600; color:#f3f8ff; line-height:1.4; letter-spacing:-0.01em;">
+        바꾸고 싶은 업무가 있다면,<br>지금 접수하세요.
+      </h2>
+      <p data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s;
+          text-align:center; max-width:620px; margin:0 auto 56px; font-size:16px; line-height:1.9; color:#E8F2FEF7;">
+        참가를 희망하는 직원은 아래 접수기간 내<br>MS Forms를 통해 참가 기획안을 제출해 주세요.
+      </p>
+
+      <div data-reveal="" style="opacity:0; transform:translateY(24px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) 0.16s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.16s;
+          text-align:left; border-radius:22px; overflow:hidden;
+          background:rgba(255,255,255,0.04); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+          border:1px solid rgba(120,190,255,0.2); box-shadow:0 26px 64px rgba(2,6,14,0.5), 0 0 40px rgba(77,178,255,0.06);">
+        <div style="padding:12px 34px 8px;">
+          <sc-for list="{{ applyRows }}" as="r" hint-placeholder-count="5">
+            <div style="display:flex; justify-content:space-between; gap:20px; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="font-size:13.5px; font-weight:600; color:rgba(120,190,255,0.7); letter-spacing:0.04em; flex:none;">{{ r.label }}</div>
+              <div style="font-size:15px; font-weight:600; color:#f3f8ff; text-align:right;">{{ r.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="padding:28px 34px 32px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+          <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=e91YW1aj306JyE7eO7uycSrYwvLyQexKtrN7gRaVP-pUN1MxSVFPTE9GNkY4RTY0Tk5JMThFTlJGTy4u" target="_blank" rel="noopener noreferrer" style="width:100%; display:inline-flex; align-items:center; justify-content:center; gap:10px;
+              padding:17px 32px; border-radius:14px; font-size:16px; font-weight:700; letter-spacing:0.01em;
+              color:#03101f; background:linear-gradient(95deg, #4de1ff 0%, #2f7bff 100%);
+              box-shadow:0 0 0 1px rgba(160,225,255,0.5) inset, 0 10px 30px rgba(47,123,255,0.4), 0 0 40px rgba(77,225,255,0.24);
+              transition: transform 0.28s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease, filter 0.3s ease;
+              animation: ctaGlow 3.2s ease-in-out infinite;" style-hover="transform:translateY(-3px) scale(1.02); box-shadow:0 0 0 1.5px rgba(210,245,255,0.85) inset, 0 16px 42px rgba(47,123,255,0.6), 0 0 60px rgba(77,225,255,0.5); filter:brightness(1.08);">
+            참가 기획안 제출하기 <span>→</span>
+          </a>
+          <div style="font-size:12.5px; color:rgba(180,205,235,0.5);">Microsoft Forms로 연결됩니다.</div>
+        </div>
+
+        <div style="padding:22px 34px 30px; border-top:1px solid rgba(255,255,255,0.06);
+            display:flex; align-items:center; justify-content:center; gap:18px;">
+          <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=e91YW1aj306JyE7eO7uycSrYwvLyQexKtrN7gRaVP-pUN1MxSVFPTE9GNkY4RTY0Tk5JMThFTlJGTy4u" target="_blank" rel="noopener noreferrer" style="flex:none; width:104px; height:104px; padding:8px; border-radius:14px; background:#ffffff;
+              box-shadow:0 6px 20px rgba(0,0,0,0.35), 0 0 0 1px rgba(120,190,255,0.25);
+              transition:transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;" style-hover="transform:translateY(-2px) scale(1.03); box-shadow:0 10px 30px rgba(47,123,255,0.4), 0 0 0 1px rgba(160,220,255,0.6);">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&amp;margin=0&amp;ecc=M&amp;data=https%3A%2F%2Fforms.office.com%2FPages%2FResponsePage.aspx%3Fid%3De91YW1aj306JyE7eO7uycSrYwvLyQexKtrN7gRaVP-pUN1MxSVFPTE9GNkY4RTY0Tk5JMThFTlJGTy4u" alt="참가 기획안 접수 QR코드" width="88" height="88" style="display:block; width:100%; height:100%; border-radius:6px;">
+          </a>
+          <div style="font-size:12.5px; line-height:1.6; color:rgba(196,216,240,0.62);">모바일에서는 QR코드로도<br>접수할 수 있습니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer data-screen-label="Footer" style="border-top:1px solid rgba(255,255,255,0.06);
+      padding:48px; text-align:center;">
+    <div style="font-size:15px; font-weight:700; color:#f3f8ff; margin-bottom:10px; letter-spacing:0.01em;">AX경진대회</div>
+    <div style="font-size:12.5px; letter-spacing:0.1em; color:rgba(170,200,235,0.45);">POSCO A&amp;C · 디지털혁신섹션</div>
+  </footer>
+
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.phrases = [
+      '내 업무에 필요한 대시보드를 만들어줘.',
+      '반복되는 엑셀 취합을 자동화해줘.',
+      '회의록에서 액션아이템을 정리해줘.',
+      '자주 묻는 업무 문의에 답하는 Agent를 만들어줘.',
+      '보고자료 초안을 자동으로 만들어줘.',
+    ];
+
+    this.infoChips = [
+      { label: '개인 또는 2인 1팀' },
+      { label: '10개 팀 내외 선정' },
+      { label: '바이브코딩 교육' },
+      { label: '멘토링 지원' },
+    ];
+
+    this.flowNodes = [
+      { num: '01', title: '업무개선 아이디어', desc: '자료 취합 · 기준 확인 · 반복 입력', mid: false, conn: true },
+      { num: '02', title: 'AI와 제작', desc: '화면 · 기능 · 자동화 흐름', mid: true, conn: true },
+      { num: '03', title: '적용 가능성 확인', desc: '실제 업무 흐름에 맞는지 확인', mid: false, conn: false },
+    ].map((n, i) => ({
+      num: n.num,
+      title: n.title,
+      desc: n.desc,
+      hasConn: n.conn,
+      floatDur: (4.2 + i * 0.5).toFixed(1),
+      floatDelay: (i * 0.5).toFixed(1),
+      pulseDelay: (i * 1.0).toFixed(1),
+      cardBg: n.mid ? 'rgba(77,225,255,0.08)' : 'rgba(255,255,255,0.035)',
+      cardBorder: n.mid ? 'rgba(120,220,255,0.5)' : 'rgba(255,255,255,0.09)',
+      cardShadow: n.mid
+        ? '0 20px 50px rgba(4,10,20,0.5), 0 0 42px rgba(77,225,255,0.22)'
+        : '0 16px 40px rgba(4,10,20,0.4)',
+    }));
+
+    this.vibeSteps = [
+      { num: '01', title: '기획한다', desc: '내 업무에서 반복되거나 불편한 흐름을 정의합니다.' },
+      { num: '02', title: '만들어본다', desc: 'AI에게 말하듯 요청하며 화면, 버튼, 계산식, 자동화 흐름을 구현합니다.' },
+      { num: '03', title: '검증한다', desc: '동료가 써보고 실제 업무 프로세스에 적용 가능한지 확인합니다.' },
+    ].map((c, i, arr) => ({ ...c, delay: (i * 0.08).toFixed(2), hasLine: i < arr.length - 1 }));
+
+    this.exampleCards = [
+      { num: '01', title: '반복 입력·자료 취합 자동화', desc: '매주·매월 반복되는 엑셀 입력, 파일 정리, 자료 취합 개선', tag: '자동화', file: 'auto_collect.py' },
+      { num: '02', title: '업무 현황 대시보드', desc: '인력, 라이선스, 과제, 일정 등 흩어진 현황을 한 화면에서 확인', tag: '시각화', file: 'dashboard.app' },
+      { num: '03', title: '기준·절차 검토 지원', desc: '규정, 매뉴얼, 체크리스트 기반으로 누락 여부 확인', tag: '기준 확인', file: 'rule_check.app' },
+      { num: '04', title: '업무 문의·보고 초안 Agent', desc: '반복 문의 답변, 회의자료 요약, 보고자료 초안 작성 지원', tag: '문의 응대', file: 'report_agent.ai' },
+    ].map((c, i) => ({ ...c, delay: (i * 0.08).toFixed(2), floatDur: (5.6 + i * 0.5).toFixed(1), floatDelay: (i * 0.55).toFixed(2), spinDelay: (i * -1.1).toFixed(2) }));
+
+    this.benefitCards = [
+      { title: '바이브코딩 전문 교육', desc: 'AI 개발도구를 활용한 결과물 제작 방법을 배웁니다.' },
+      { title: '온라인 교육 제공', desc: '개발 과정 중 반복 학습이 가능한 온라인 콘텐츠를 제공합니다.' },
+      { title: '전문 개발자 멘토링', desc: '아이디어 구체화부터 기능 구현, 결과물 개선까지 지원합니다.' },
+      { title: 'AI 개발도구 2개월 이용권', desc: '과제 개발과 실습을 위한 이용권을 제공합니다.' },
+    ].map((c, i) => ({ ...c, num: String(i + 1).padStart(2, '0'), delay: (i * 0.07).toFixed(2) }));
+
+    this.roadmapSteps = [
+      { num: '01', title: '서류 접수', date: '7월 3주~4주', desc: '현업 업무개선 아이디어와 참가팀을 접수합니다.' },
+      { num: '02', title: '서류 심사', date: '7월 5주', desc: '업무효과·개발 가능성·적합성을 기준으로 10개 팀을 선정합니다.' },
+      { num: '03', title: '기본교육', date: '8월 2주', desc: '바이브코딩 기본교육을 2일간 진행합니다.' },
+      { num: '04', title: '개발 및 멘토링', date: '8월 3주~9월 1주', desc: '4주간 팀별 개발과 주간 온·오프라인 멘토링을 진행합니다.' },
+      { num: '05', title: '발표 및 시상', date: '9월 3주', desc: '최종 발표를 통해 우수과제를 선정합니다.' },
+      { num: '06', title: '운영 전환 검토', date: '10월 이후', desc: '우수과제에 한해 게시·배포, 서버, 보안, 라이선스를 검토합니다.' },
+    ].map((c, i) => ({ ...c, delay: (i * 0.06).toFixed(2), isLeft: i % 2 === 0, isRight: i % 2 === 1 }));
+
+    this.applyRows = [
+      { label: '접수기간', value: '2026. 7. 13. ~ 7. 24.' },
+      { label: '접수방법', value: 'MS Forms 참가 기획안 제출' },
+      { label: '참가방식', value: '개인 또는 2인 1팀' },
+      { label: '선정규모', value: '10개 팀 내외' },
+      { label: '참가문의', value: '디지털혁신섹션 하나 과장' },
+    ];
+
+    this.faqData = [
+      {
+        q: '개발을 몰라도 참여 가능한가요?',
+        a1: '그럼요. 당연히 가능합니다. 이번 경진대회에서 중요한 것은 코딩 실력보다 기획력과 업무 아이디어입니다.',
+        a2: '어떤 업무가 불편한지, 어떤 프로세스를 바꾸고 싶은지 설명할 수 있다면 AI 개발도구와 멘토링을 통해 충분히 결과물을 만들어볼 수 있습니다.',
+      },
+      {
+        q: '결과물은 꼭 완성된 시스템이어야 하나요?',
+        a1: '아닙니다. 이번 경진대회는 완성 시스템 구축이 아니라 PoC 아이디어 실험 단계입니다.',
+        a2: '작은 범위라도 실제 업무 프로세스에서 쓸 수 있는지, 업무 개선 가능성이 있는지를 검증하는 것이 중요합니다.',
+      },
+      {
+        q: '어떤 과제가 좋은 과제인가요?',
+        a1: '가장 좋은 과제는 실제 업무 프로세스 안에서 쓰일 수 있는 과제입니다. 반복 입력, 자료 취합, 기준 확인, 현황 점검, 보고자료 초안 작성처럼 자주 발생하고 시간이 많이 드는 업무가 적합합니다.',
+        a2: '핵심은 “만들 수 있는가”보다 실제 업무 흐름에 들어갈 수 있는가입니다.',
+      },
+      {
+        q: '심사기준은 어떻게 되나요?',
+        a1: '심사는 실제 업무 적용 가능성을 가장 중요하게 봅니다. 업무 프로세스 적용성 50%, 구현 가능성 30%, 업무 개선효과 20%로 평가합니다.',
+        a2: '아이디어가 화려한지보다, 실제 업무에 적용할 수 있고 작은 범위에서 검증 가능한지가 중요합니다.',
+      },
+      {
+        q: '교육과 멘토링은 어떻게 진행되나요?',
+        a1: '주요 교육은 송도 본사에서 2일간 오프라인으로 진행됩니다.',
+        a2: '이후 과제 개발 과정에서는 팀별 상황에 맞춰 온라인·오프라인 멘토링을 병행하여 지원합니다.',
+      },
+    ];
+
+    // seeded particles, computed once
+    const particles = [];
+    let seed = 42;
+    const rand = () => {
+      seed = (seed * 9301 + 49297) % 233280;
+      return seed / 233280;
+    };
+    for (let i = 0; i < 18; i++) {
+      particles.push({
+        left: Math.round(rand() * 100),
+        top: Math.round(60 + rand() * 38),
+        size: Math.round(2 + rand() * 3),
+        duration: (7 + rand() * 6).toFixed(1),
+        delay: (rand() * 8).toFixed(1),
+        opacity: (0.25 + rand() * 0.35).toFixed(2),
+      });
+    }
+
+    this.state = {
+      particles,
+      typedText: '',
+      isDone: false,
+      ctaVisible: false,
+      ctaHover: false,
+      headerVisible: false,
+      heroPhase: 'visible',
+      contentRevealed: false,
+      awardRevealed: false,
+      faqOpenIndex: -1,
+      chatUserText: '',
+      chatUserTyping: false,
+      chatShowAi: false,
+      chatAiText: '',
+      chatAiTyping: false,
+      chatShowResult: false,
+    };
+
+    this._phraseIndex = 0;
+    this._timer = null;
+    this._io = null;
+    this._heroIo = null;
+    this._heroEl = null;
+    this._awardEl = null;
+    this._awardIo = null;
+    this._transTimer = null;
+    this._chatEl = null;
+    this._chatIo = null;
+    this._chatStarted = false;
+    this._chatTimers = [];
+    this._chatUserMsg = '참가 접수 페이지를 만들고 싶어요. 신청 기간, 참가 대상, 접수 버튼이 한눈에 보이게 해주세요.';
+    this._chatAiMsg = '좋아요. 접수 정보를 카드형으로 정리하고, 신청 버튼이 자연스럽게 보이도록 구성해볼게요.';
+  }
+
+  componentDidMount() {
+    this._timer = setTimeout(() => this._typePhrase(this._phraseIndex), 1900);
+    document.body.style.overflow = 'hidden';
+
+    requestAnimationFrame(() => {
+      const els = document.querySelectorAll('[data-reveal]');
+      const reveal = (el) => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; };
+      this._io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            reveal(entry.target);
+            this._io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.01, rootMargin: '0px 0px -8% 0px' });
+      els.forEach((el) => this._io.observe(el));
+      // safety: any element already within/near the viewport on load
+      requestAnimationFrame(() => {
+        els.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) { reveal(el); this._io.unobserve(el); }
+        });
+      });
+
+      if (this._heroEl) {
+        this._heroIo = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              this.setState({ headerVisible: !entry.isIntersecting });
+            });
+          },
+          { rootMargin: '-73px 0px 0px 0px', threshold: 0 }
+        );
+        this._heroIo.observe(this._heroEl);
+      }
+
+      if (this._awardEl) {
+        this._awardIo = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                this.setState({ awardRevealed: true });
+                this._awardIo.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.35 }
+        );
+        this._awardIo.observe(this._awardEl);
+      }
+
+      if (this._chatEl) {
+        this._chatIo = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                if (!this._chatInView) {
+                  this._chatInView = true;
+                  this._runChat();
+                }
+              } else {
+                this._chatInView = false;
+              }
+            });
+          },
+          { threshold: 0.4 }
+        );
+        this._chatIo.observe(this._chatEl);
+      }
+
+      // roadmap scroll-progress + node lighting
+      this._tlContainer = document.getElementById('ax-tl-container');
+      this._tlProgress = document.getElementById('ax-tl-progress');
+      this._tlItems = Array.prototype.slice.call(document.querySelectorAll('.ax-tl-item'));
+      this._onTlScroll = () => {
+        const scrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        const vc = scrollY + window.innerHeight * 0.5;
+        if (this._tlContainer && this._tlProgress) {
+          const rect = this._tlContainer.getBoundingClientRect();
+          const top = rect.top + scrollY;
+          let pct = ((vc - top) / rect.height) * 100;
+          pct = Math.max(0, Math.min(100, pct));
+          this._tlProgress.style.height = pct + '%';
+        }
+        this._tlItems.forEach((item) => {
+          const node = item.querySelector('.ax-tl-node');
+          const ref = node || item;
+          const nodeTop = ref.getBoundingClientRect().top + scrollY;
+          if (vc >= nodeTop - 40) item.classList.add('is-active');
+          else item.classList.remove('is-active');
+        });
+      };
+      window.addEventListener('scroll', this._onTlScroll, { capture: true, passive: true });
+      window.addEventListener('resize', this._onTlScroll, { passive: true });
+      this._onTlScroll();
+    });
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this._timer);
+    clearTimeout(this._transTimer);
+    clearTimeout(this._safetyTimer);
+    (this._chatTimers || []).forEach(clearTimeout);
+    if (this._io) this._io.disconnect();
+    if (this._awardIo) this._awardIo.disconnect();
+    if (this._chatIo) this._chatIo.disconnect();
+    if (this._heroIo) this._heroIo.disconnect();
+    if (this._onTlScroll) { window.removeEventListener('scroll', this._onTlScroll, true); window.removeEventListener('resize', this._onTlScroll); }
+    document.body.style.overflow = '';
+  }
+
+  _handleCtaClick(e) {
+    e.preventDefault();
+    if (this.state.heroPhase !== 'visible') return;
+    this.setState({ heroPhase: 'leaving' });
+    this._transTimer = setTimeout(() => {
+      this.setState({ heroPhase: 'hidden' });
+      document.body.style.overflow = '';
+      window.scrollTo(0, 0);
+      this._transTimer = setTimeout(() => {
+        this.setState({ contentRevealed: true });
+      }, 30);
+    }, 700);
+  }
+
+  _handleLogoClick(e) {
+    e.preventDefault();
+    if (this.state.heroPhase !== 'hidden') return;
+    this.setState({ contentRevealed: false });
+    this._transTimer = setTimeout(() => {
+      document.body.style.overflow = 'hidden';
+      window.scrollTo(0, 0);
+      this.setState({ heroPhase: 'entering' });
+      this._transTimer = setTimeout(() => {
+        this.setState({ heroPhase: 'visible' });
+      }, 30);
+      this._safetyTimer = setTimeout(() => {
+        if (this.state.heroPhase !== 'visible') this.setState({ heroPhase: 'visible' });
+      }, 400);
+    }, 550);
+  }
+
+  _runChat() {
+    (this._chatTimers || []).forEach(clearTimeout);
+    this._chatTimers = [];
+    this.setState({
+      chatUserText: '', chatUserTyping: false,
+      chatShowAi: false, chatAiText: '', chatAiTyping: false,
+      chatShowResult: false,
+    });
+    const userMsg = this._chatUserMsg;
+    const aiMsg = this._chatAiMsg;
+    const push = (fn, delay) => { this._chatTimers.push(setTimeout(fn, delay)); };
+
+    // 1) type user message
+    this.setState({ chatUserTyping: true });
+    let ui = 0;
+    const typeUser = () => {
+      ui++;
+      this.setState({ chatUserText: userMsg.slice(0, ui) });
+      if (ui < userMsg.length) {
+        push(typeUser, 34);
+      } else {
+        this.setState({ chatUserTyping: false });
+        // 2) show AI bubble, then type
+        push(() => {
+          this.setState({ chatShowAi: true, chatAiTyping: true });
+          let ai = 0;
+          const typeAi = () => {
+            ai++;
+            this.setState({ chatAiText: aiMsg.slice(0, ai) });
+            if (ai < aiMsg.length) {
+              push(typeAi, 32);
+            } else {
+              this.setState({ chatAiTyping: false });
+              // 3) reveal result card
+              push(() => this.setState({ chatShowResult: true }), 550);
+            }
+          };
+          push(typeAi, 260);
+        }, 620);
+      }
+    };
+    push(typeUser, 300);
+  }
+
+  _typePhrase(phraseIdx) {
+    const text = this.phrases[phraseIdx];
+    let i = 0;
+    const step = () => {
+      i++;
+      this.setState({ typedText: text.slice(0, i) });
+      if (i < text.length) {
+        this._timer = setTimeout(step, 78);
+      } else {
+        this.setState({ isDone: true });
+        if (!this.state.ctaVisible) {
+          this._timer = setTimeout(() => this.setState({ ctaVisible: true }), 120);
+        }
+        this._timer = setTimeout(() => this._deletePhrase(text.length), 1050);
+      }
+    };
+    this._timer = setTimeout(step, 40);
+  }
+
+  _deletePhrase(len) {
+    this.setState({ isDone: false });
+    let i = len;
+    const step = () => {
+      i--;
+      this.setState({ typedText: this.phrases[this._phraseIndex].slice(0, i) });
+      if (i > 0) {
+        this._timer = setTimeout(step, 42);
+      } else {
+        this._phraseIndex = (this._phraseIndex + 1) % this.phrases.length;
+        this._timer = setTimeout(() => this._typePhrase(this._phraseIndex), 380);
+      }
+    };
+    this._timer = setTimeout(step, 42);
+  }
+
+  renderVals() {
+    const {
+      particles, typedText, isDone, ctaVisible, ctaHover,
+      headerVisible, heroPhase, contentRevealed, faqOpenIndex,
+    } = this.state;
+
+    const faqItems = this.faqData.map((f, i) => {
+      const open = faqOpenIndex === i;
+      return {
+        ...f,
+        delay: (i * 0.06).toFixed(2),
+        toggle: () => this.setState({ faqOpenIndex: open ? -1 : i }),
+        rows: open ? '1fr' : '0fr',
+        vScale: open ? 'scaleY(0)' : 'scaleY(1)',
+        answerOpacity: open ? 1 : 0,
+        answerDelay: open ? '0.15s' : '0s',
+        cardBg: open ? 'rgba(77,225,255,0.055)' : 'rgba(255,255,255,0.03)',
+        cardBorder: open ? 'rgba(120,210,255,0.5)' : 'rgba(255,255,255,0.09)',
+        cardShadow: open
+          ? '0 0 0 1px rgba(120,210,255,0.12) inset, 0 16px 40px rgba(4,10,20,0.4), 0 0 34px rgba(77,225,255,0.16)'
+          : '0 0 0 rgba(0,0,0,0)',
+      };
+    });
+
+    const ctaBaseY = ctaVisible ? 0 : 14;
+    const ctaHoverY = ctaHover ? -4 : 0;
+    const ctaScale = ctaHover ? 1.055 : 1;
+
+    return {
+      particles,
+      infoChips: this.infoChips,
+      vibeSteps: this.vibeSteps,
+      flowNodes: this.flowNodes,
+      exampleCards: this.exampleCards,
+      benefitCards: this.benefitCards,
+      applyRows: this.applyRows,
+      timelineSteps: this.roadmapSteps,
+      roadmapSteps: this.roadmapSteps,
+      faqItems,
+      typedText,
+      cursorAnim: isDone ? 'blinkCursor 1.1s step-end infinite' : 'none',
+      promptBorder: isDone ? 'rgba(120,220,255,0.55)' : 'rgba(120,180,255,0.22)',
+      promptShadow: isDone
+        ? '0 0 42px rgba(77,178,255,0.30), 0 0 12px rgba(120,220,255,0.26) inset'
+        : '0 0 22px rgba(47,123,255,0.12)',
+      ctaOpacity: ctaVisible ? 1 : 0,
+      ctaHoverTransform: `translateY(${ctaBaseY + ctaHoverY}px) scale(${ctaScale})`,
+      ctaShadow: ctaHover
+        ? '0 0 0 1.5px rgba(210,245,255,0.85) inset, 0 18px 50px rgba(47,123,255,0.65), 0 0 78px rgba(77,225,255,0.55)'
+        : '0 0 0 1px rgba(160,225,255,0.5) inset, 0 10px 34px rgba(47,123,255,0.45), 0 0 46px rgba(77,225,255,0.28)',
+      ctaFilter: ctaHover ? 'brightness(1.12)' : 'brightness(1)',
+      ctaGlowAnim: ctaHover ? 'none' : 'ctaGlow 3.2s ease-in-out infinite',
+      ctaArrowTransform: ctaHover ? 'translateX(6px)' : 'translateX(0)',
+      onCtaEnter: () => this.setState({ ctaHover: true }),
+      onCtaLeave: () => this.setState({ ctaHover: false }),
+      onCtaClick: (e) => this._handleCtaClick(e),
+      onLogoClick: (e) => this._handleLogoClick(e),
+      heroRef: (el) => { this._heroEl = el; },
+      awardRef: (el) => { this._awardEl = el; },
+      chatRef: (el) => { this._chatEl = el; },
+      onVibeNav: () => { this._chatTimers.push(setTimeout(() => { this._chatInView = true; this._runChat(); }, 720)); },
+      chatUserText: this.state.chatUserText,
+      chatUserCaret: this.state.chatUserTyping ? 'inline-block' : 'none',
+      chatShowAi: this.state.chatShowAi,
+      chatAiText: this.state.chatAiText,
+      chatAiCaret: this.state.chatAiTyping ? 'inline-block' : 'none',
+      chatShowResult: this.state.chatShowResult,
+      chatResultItems: [
+        { label: '접수 기간', delay: '0.5' },
+        { label: '참가 대상', delay: '0.62' },
+        { label: '신청 방법', delay: '0.74' },
+        { label: '신청하기 버튼', delay: '0.86' },
+      ],
+      beamLeftTransform: this.state.awardRevealed
+        ? 'translateX(-50%) translateX(-186px) rotate(22deg)'
+        : 'translateX(-50%) translateX(-360px) rotate(-6deg)',
+      beamRightTransform: this.state.awardRevealed
+        ? 'translateX(-50%) translateX(186px) rotate(-22deg)'
+        : 'translateX(-50%) translateX(360px) rotate(6deg)',
+      beamOpacity: this.state.awardRevealed ? 1 : 0,
+      poolOpacity: this.state.awardRevealed ? 1 : 0,
+      sealGlow: this.state.awardRevealed
+        ? '0 0 26px rgba(120,205,255,0.6), inset 0 0 14px rgba(120,205,255,0.35)'
+        : '0 0 0 rgba(120,205,255,0)',
+      num3Shadow: this.state.awardRevealed ? '0 0 22px rgba(140,215,255,0.75)' : '0 0 0 rgba(140,215,255,0)',
+      awardSpotOpacity: this.state.awardRevealed ? 1 : 0,
+      headerOpacity: headerVisible ? 1 : 0,
+      headerTransform: headerVisible ? 'translateY(0)' : 'translateY(-12px)',
+      headerPointerEvents: headerVisible ? 'auto' : 'none',
+      heroDisplay: heroPhase === 'hidden' ? 'none' : 'flex',
+      heroOpacity: heroPhase === 'visible' ? 1 : 0,
+      heroTransform: heroPhase === 'visible' ? 'scale(1)' : 'scale(0.94)',
+      heroFilter: heroPhase === 'visible' ? 'blur(0px)' : 'blur(14px)',
+      heroPointerEvents: heroPhase === 'visible' ? 'auto' : 'none',
+      contentOpacity: contentRevealed ? 1 : 0,
+      contentTransform: contentRevealed ? 'translateY(0)' : 'translateY(16px)',
+    };
+  }
+}
+
+</script>
+</body>
+</html>
