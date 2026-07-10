@@ -447,7 +447,7 @@
     #ax-award-spread {
       gap:18px !important;
       margin-top:22px !important;
-      perspective:none !important;
+      perspective:1200px !important;
     }
     #award .ax-award.ac { order:-1 !important; }
     #award .ax-award.al { order:0 !important; }
@@ -457,41 +457,63 @@
     }
     .ax-flip,
     .ax-flip.grand {
-      height:auto !important;
+      height:16.25rem !important;
       min-height:0 !important;
-      perspective:none !important;
-      cursor:default !important;
+      perspective:1200px !important;
+      cursor:pointer !important;
     }
+    #award .ax-flip.grand { height:17.75rem !important; }
     #award .ax-flip-inner {
       display:block !important;
-      height:auto !important;
+      position:relative !important;
+      height:100% !important;
       transform:none !important;
-      transform-style:flat !important;
-      transition:none !important;
+      transform-style:preserve-3d !important;
+      transition:transform .8s cubic-bezier(0.4,0,0.2,1) !important;
     }
-    #award .ax-award:hover .ax-flip-inner {
-      transform:none !important;
+    #award .ax-award:hover .ax-flip-inner,
+    #award .ax-award:focus-within .ax-flip-inner,
+    #award .ax-award.is-flipped .ax-flip-inner {
+      transform:rotateY(180deg) !important;
     }
     #award .ax-flip-front {
-      display:none !important;
+      display:flex !important;
+      position:absolute !important;
+      inset:0 !important;
+      padding:26px 20px !important;
+      border-radius:18px !important;
+      -webkit-backface-visibility:hidden !important;
+      backface-visibility:hidden !important;
     }
     #award .ax-flip-back {
-      position:relative !important;
-      inset:auto !important;
-      transform:none !important;
-      min-height:180px !important;
+      position:absolute !important;
+      inset:0 !important;
+      transform:rotateY(180deg) !important;
+      min-height:0 !important;
       padding:28px 22px !important;
       border-radius:18px !important;
-      -webkit-backface-visibility:visible !important;
-      backface-visibility:visible !important;
+      -webkit-backface-visibility:hidden !important;
+      backface-visibility:hidden !important;
     }
     #award .ax-award.ac .ax-flip-back {
-      min-height:205px !important;
       box-shadow:0 22px 52px rgba(3,8,18,0.55), inset 0 0 18px rgba(77,178,255,0.14) !important;
     }
     #award .ax-flip-back div {
       word-break:keep-all !important;
       text-wrap:pretty !important;
+    }
+    #award .ax-flip-back > div:last-child {
+      max-width:14em !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+      font-size:15px !important;
+      line-height:1.9 !important;
+      word-spacing:0.04em !important;
+    }
+    #award .ax-award.ac .ax-flip-back > div:last-child {
+      max-width:13em !important;
+      font-size:16px !important;
+      line-height:1.9 !important;
     }
     #award .ax-confetti {
       display:none !important;
@@ -1712,6 +1734,36 @@ class Component extends DCLogic {
   }
 }
 
+</script>
+<script>
+(function () {
+  function bindAwardCards() {
+    var cards = document.querySelectorAll('#award .ax-award');
+    cards.forEach(function (card) {
+      if (card.dataset.flipBound === 'true') return;
+      card.dataset.flipBound = 'true';
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('click', function () {
+        if (!window.matchMedia('(max-width: 720px)').matches) return;
+        cards.forEach(function (other) {
+          if (other !== card) other.classList.remove('is-flipped');
+        });
+        card.classList.toggle('is-flipped');
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindAwardCards);
+  } else {
+    bindAwardCards();
+  }
+  setTimeout(bindAwardCards, 400);
+  setTimeout(bindAwardCards, 1200);
+  setTimeout(bindAwardCards, 2400);
+  new MutationObserver(bindAwardCards).observe(document.body, { childList: true, subtree: true });
+  window.addEventListener('resize', bindAwardCards, { passive: true });
+})();
 </script>
 </body>
 </html>
