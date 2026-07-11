@@ -457,6 +457,12 @@
     #award .ax-award.ac { order:-1 !important; }
     #award .ax-award.al { order:0 !important; }
     #award .ax-award.ar { order:1 !important; }
+    #award .ax-award,
+    #award .ax-award:focus,
+    #award .ax-award:focus-visible {
+      outline:none !important;
+      -webkit-tap-highlight-color:transparent !important;
+    }
     #award .ax-tarot-wrap {
       transform:none !important;
     }
@@ -473,32 +479,39 @@
       position:relative !important;
       height:100% !important;
       transform:none !important;
+      -webkit-transform:none !important;
       transform-style:preserve-3d !important;
+      -webkit-transform-style:preserve-3d !important;
       transition:transform .8s cubic-bezier(0.4,0,0.2,1) !important;
+      will-change:transform !important;
     }
-    #award .ax-award:hover .ax-flip-inner,
-    #award .ax-award:focus-within .ax-flip-inner,
     #award .ax-award.is-flipped .ax-flip-inner {
+      -webkit-transform:rotateY(180deg) !important;
       transform:rotateY(180deg) !important;
     }
     #award .ax-flip-front {
       display:flex !important;
       position:absolute !important;
       inset:0 !important;
+      transform:rotateY(0deg) translateZ(1px) !important;
+      -webkit-transform:rotateY(0deg) translateZ(1px) !important;
       padding:26px 20px !important;
       border-radius:18px !important;
       -webkit-backface-visibility:hidden !important;
       backface-visibility:hidden !important;
+      overflow:hidden !important;
     }
     #award .ax-flip-back {
       position:absolute !important;
       inset:0 !important;
       transform:rotateY(180deg) !important;
+      -webkit-transform:rotateY(180deg) translateZ(1px) !important;
       min-height:0 !important;
       padding:28px 22px !important;
       border-radius:18px !important;
       -webkit-backface-visibility:hidden !important;
       backface-visibility:hidden !important;
+      overflow:hidden !important;
     }
     #award .ax-award.ac .ax-flip-back {
       box-shadow:0 22px 52px rgba(3,8,18,0.55), inset 0 0 18px rgba(77,178,255,0.14) !important;
@@ -522,6 +535,24 @@
     }
     #award .ax-confetti {
       display:none !important;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      #award .ax-award:hover .ax-flip-inner,
+      #award .ax-award:focus-within .ax-flip-inner {
+        -webkit-transform:rotateY(180deg) !important;
+        transform:rotateY(180deg) !important;
+      }
+    }
+    @media (hover: none), (pointer: coarse) {
+      #award .ax-award:hover .ax-flip-inner,
+      #award .ax-award:focus-within .ax-flip-inner {
+        -webkit-transform:none !important;
+        transform:none !important;
+      }
+      #award .ax-award.is-flipped .ax-flip-inner {
+        -webkit-transform:rotateY(180deg) !important;
+        transform:rotateY(180deg) !important;
+      }
     }
     .ax-confetti {
       transform:scale(1) !important;
